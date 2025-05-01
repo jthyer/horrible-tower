@@ -1,0 +1,203 @@
+{
+  "name": "horrible-tower",
+  "ogmoVersion": "3.4.0",
+  "levelPaths": ["."],
+  "backgroundColor": "#282c34ff",
+  "gridColor": "#3c4049cc",
+  "anglesRadians": true,
+  "directoryDepth": 5,
+  "layerGridDefaultSize": {"x": 16, "y": 16},
+  "levelDefaultSize": {"x": 320, "y": 240},
+  "levelMinSize": {"x": 128, "y": 128},
+  "levelMaxSize": {"x": 4096, "y": 4096},
+  "levelValues": [],
+  "defaultExportMode": ".json",
+  "compactExport": false,
+  "externalScript": "",
+  "playCommand": "",
+  "entityTags": ["entities"],
+  "layers": [
+    {
+      "definition": "entity",
+      "name": "object",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "82657001",
+      "requiredTags": [],
+      "excludedTags": []
+    },
+    {
+      "definition": "tile",
+      "name": "solid",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "82862922",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": "solid"
+    },
+    {
+      "definition": "tile",
+      "name": "tile",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "82202335",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": "castle"
+    }
+  ],
+  "entities": [
+    {
+      "exportID": "20512387",
+      "name": "player",
+      "limit": -1,
+      "size": {"x": 32, "y": 32},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 32, "y": 32},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["entities"],
+      "values": [],
+      "texture": "../assets/sprites/spr_player.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADFElEQVRYR8VXi3LjIAwE0vvrJraT3z6b0yKJlxFOezMtM+ccNqDVaiVR7355+In9WL7RMk/T6Gbr8/JAKw9HT3foO3Of9SHuZA9H8MAyss6r5yCCi3FvjDuPqQF+CuCWv+LUQwDI4a2NjkgGDBfKvjHwAQAfaZCx4NaVKVyfzCa9lsHWMe0PSCzR5/XBS7fVub+0UJw52Ru9iAdtwEHqBw6CccAJ6dE5PJhKuNIX7LXCd2aAWIMRaEAPKZ4XSAetCVBbYmEcD+yvjA/1Y2pA/S/Gr71marLy2YHyamhrmoa9cS+UHNBIwtNkR9FIChNb/qAl+yRzbAApnYrXTCerEEAUnPVed16lrhmCk/c3OKRp4EnZ3t1ybWBG8ByFbAbiEkCdahpTMLNt7OOyFLGm7KmlguJJL24Q61cL0Ux8dYppmvUCzDhIDx7sGTq4ZIAPKmJTYAGakBxnXcBLOx2/CoAdq9qRGikeqxhzj6jiX5cwuwiZtFRhZBBJCOXQNgRc763xnSzo/E69tURC/yvBO9EuqlWQgcLHXSOPJuwnDZDH7epqxVmYJebaIvoe0DPTMzIFYDSU7kx0AqDGk3xFKnL/T6MGvRMbH7jYVBkxBNC3WW0qKsR1Rf7v7rnd3OcS3Wvz1LrFmADIhlEIMEkdNLjgU0Cy3TcYYPHBgP57kNHny7vlM7rtSb803wSErmH/zwK9DAHxFw/qtQmZFBEcirGuKLVHMgYGtu2P/DII9IiyttA/0IfNQIleL58yR26C9js8fwW33HFd4zPHpci+oJqVUM3VXU+PYQ0w7csdIMhz9AacJpcZrE2YqvIxcmkEIFfARnxUz1N7pnLr6cpUg8gCFKNtq2az71/JmhIcyCG+4TdXG7kbsBY49mx0cFmVjojeIXw0REwZwMq67epO3JgxDqIkiGt1vp/2TDriEMBOVONGpQcp9Af1/orOhhUFUO/BWtwX/iMEFgNcE3TUGrBZez8EEG7622A0mH7cyfmnHmChr6KYc5hQEs/DSsMEQrKq32XuwZVQe0CHb2Zn7OlPvf0Hs5J8MCAHPQQAAAAASUVORK5CYIIA"
+    },
+    {
+      "exportID": "21129402",
+      "name": "skull",
+      "limit": -1,
+      "size": {"x": 32, "y": 32},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 32, "y": 32},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["entities"],
+      "values": [],
+      "texture": "../assets/sprites/spr_skull.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFRklEQVRYR62XDVLjRhCFW+Iwu2uzqYDEXgQMBwhI3lPE5BCpWOwFEpKT7BqnaoPJZVbK93pm5B/8A7UZF9iWRtOvX7/+cWavWbl1vr3N9e/Qk9mhDbr/ok3xoGCclcwXw8KKEX+8tGaPM9PLFuHzytpp5yUA3LCM2YB3Xi24RUYxPONaYEL3ZdTBDKPpR7PmvvG/Xc4eAtAVg3Bg8lLuF+/MPnPlbCBvufMW43kwLgYCCDHAJ55vbhurJ2O+d8/s7QaAizJUDKpAbzpYX1YBwYrLQcDE0sYSAEGpjzKbibqNtY+BrhhVMbrxKVELrQXv7udA0cnsg5X2TfoccQ9GFKrZghANHpwFIawvP24NxV4AFQLzA2T4Hz4dS1xLBs4w5M7jeVQC4cDfvLAHIHb3ca/CgA7qy/qZFvYAyLtqdL1GmOt68RkPczuRBpQBGRR33HkCHO+iPGhA4PneBQdcjJeNQrlmcycAaEaAIf5JA3Y/szmxbsU8B4shpaEOn3HPFRBTs0KY9l5hOvG6Mf2rsbvbWgy+DACEd9dXheVtkJ8tMCL60/JskIFTANytMeUMAGzqAIMTyoRm8goG5GPFwzsKix/qhQgPmz8/sVuJkHmNSFWyGJ1aRdyri4o9MwCUL2agK4ZQNzjzzG6gd7lkIBRFF+kQkITggSLUl8q42dUwOrHKa4BZeYEInw5roFNOV+eiDv9TWV3aDcfjfSXBKSUJzWzB3ifSzgUSF/fEov5Uvn8lBHO0sFoPNkXoT1cjpUvn9AuA4V3GCV276n1lLQaOMN7F0ishptUSjPFgbB21oYyprFK9mYorAHKMt47W8z4KzjXAwenoEHdXQPD6cW6nJOXZpOB9pRRri+/rAFA6yIL0rS9/WytIqwy46LatVIa97jk4JZyaTIAlen8gIz5eUTlVBTFo9sU1IQMhK8K7wtXclvaJZyleWQLgZVePhQhyMDlsX7fAiX2geQy5nxBknHYzmQZhullOwtgXwRFrAuGMmM25dpNREyhKDqDIKCsTvKfc2rAFZb7SA0JXSw3Ig5FEp54fhwM1ruoWAMMbDNF4CI8v9uaA/pF6kQmYRM3lesiedQaWg0XyW8YkoC62YNGnymfUeALAYcseKc9LWBSD3sLFYwRBQuN17CMUNIUuDix9CLQ/ZsCyAWVSuO7ggahKIssAddo3aPxI9d+nI/l3QqrNrfg3iFKhap5Iwd897lq99ramYXEBiIx2mqMKpd4wxNPe8/lrZ6fEVN3O43oEPW/UmgLQ0H5DU9Kqqf/NL7AVUvjF84BYt5ZDKoz5oxLfEx69CxpYDiWBgd40m4tvAlvZ3aS26Z5xbI2KwMzmykjNm74fuBFp4FFiQt9SNaJqefei7XVB/M6cpRTn7WdvxGL7ptx7Qj/higpkk1FuV1qOU54YCN0vFK6YpvuGnoNjeS9MHexickqpaAwrUn4nT7leQ/cJ38ca43wYoUtOGMOo/bFFbud4Dz2MHIxadLPxOQRTmNTPHQB6mI6mVvwcZkZRrxqvjvgT18cTpSKhW8wB5sB3snBgJpQ3y8m4RNFqTPKwZA64OR9bwdCi5WoHoO55BwSc1q5ZMDm+CwCxDzO9//LhczO55rC/Q6x17xhDNCB7G1kgDOWlirkqIgDecB1w4TfB82H0IIDUFSvNhai8vAre9wDiTzKv/T77E4ZjzXyz2FFj11R4YEby3Rbu3QxEz/0n1x9JfKnLpHEsMOSjW88AfYTMCV1RZTv+XnwlgAQ2/i70Or4OlgaWZrD0u9Af6meJfnj5rjTckyT/z63/AKj1Sz9JriayAAAAAElFTkSuQmCC"
+    },
+    {
+      "exportID": "61179366",
+      "name": "score",
+      "limit": -1,
+      "size": {"x": 32, "y": 32},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["entities"],
+      "values": []
+    },
+    {
+      "exportID": "11329446",
+      "name": "barrier",
+      "limit": -1,
+      "size": {"x": 32, "y": 32},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 32, "y": 32},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["entities"],
+      "values": [],
+      "texture": "../assets/sprites/spr_barrier.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIElEQVQ4T2Psv/v/PwMFgHHUAIbRMGAYDQNgHhoG6QAAfaM2sfRRHRUAAAAASUVORK5CYIIA"
+    }
+  ],
+  "tilesets": [
+    {"label": "solid", "path": "../image/tile_wall.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAbSURBVDhPY/i/7iRJaFQDMWhUAzFo0GlYdxIAIZt2H8VAgwsAAAAASUVORK5CYII=", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0},
+    {"label": "castle", "path": "../image/tile_labyrinth.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAF3SURBVGhD7ZXtzYQgDMe528YVjF9dxTWMjuMKfnUEExdwj3tSQg0h5ZDCSXjSX2JsRap/7curbduPqhgtoO9748axrqs+c/enAs9/G1t1XacPfCmKb/fgWigGF1/8S0AOxnE01m+g4l8CYDH0AqF7pmky1m+g4merATdtctcFFR+u/Z8irhURUJrHBPj6OBJa93EJuLOZ8wCbO206lkdTKDQnOHPkaqP2V/W1Rfce9O+0UfevuXtC6xSwp/o5oAUYn01RAcMwJAnY972oAJkDd8EW7GvDoXUfj/4BmQMEjxWxmxbuntA6BeyRLlQaEVCabAK4ffwuvvhZ/wCnj8dAxc8qgNPHY6DiZ2ujnD4eAxUfrlU/B7IIKMnrPM8kAfM8G4sHfIBlWdRxHKppGn0G0N62TfvQfcDGM6aULmK4EQ+ODy+BB8dPQQZZaeqvATuX0Y7x7VxGO8ZPRWqgNDIHACq3Y/wUpAZKI3PAzmW0Y/xUpAbKotQfQS0n2ydoqEQAAAAASUVORK5CYII=", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
+  ]
+}
