@@ -1,2 +1,2 @@
 # horrible-tower
-[IN PROGRESS]
+[IN PROGRESS] 2D Platformer.
