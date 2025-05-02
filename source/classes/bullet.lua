@@ -1,4 +1,4 @@
-local bullet = Object:extend()
+local bullet = object:extend()
 
 function bullet:create()
   self.sprite = asset.sprite["spr_bullet"]
@@ -26,7 +26,7 @@ function bullet:step()
   end
   
   if self.target == nil then
-    self.target = objectManager.getObjectByTag("player")
+    self.target = manager.getObjectByTag("player")
     if self.target == nil then
       return
     end

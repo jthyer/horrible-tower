@@ -1,4 +1,4 @@
-local wall = Object:extend()
+local wall = object:extend()
 
 function wall:create()
   self.solid = true  

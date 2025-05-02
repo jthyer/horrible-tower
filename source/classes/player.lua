@@ -2,7 +2,7 @@ local SPEED = 3;
 local SPINSPEED = .028 --0.025
 local BULLETSPEED = 4
 
-local player = Object:extend()
+local player = object:extend()
 
 function player:create()
   self.sprite = asset.sprite["spr_player"]

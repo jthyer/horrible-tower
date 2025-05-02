@@ -1,57 +1,43 @@
 --[[
-A scene is basically a room from Game Maker. It reads tile and object data
-from my Ogmo scene files in the "scene" folder into a big table, then draws
-that data on the screen. 
+SCENE.LUA
 
-Let's start with just the tiles and bg images.
+A scene is basically a room from Game Maker. It reads tile and object data
+from my editor's scene files in the "scene" folder into a big table, then draws
+that data on the screen. 
 --]]
 
 local scene = {}
 local sceneData = require("core.sceneData")
-local sceneNum = 1
-
-local constTimer = 90
-local startTimer = constTimer
-local startUpdate = true
+local sceneNum
 
 function scene.getSceneNum()
   return sceneNum
 end
 
-function scene.getSceneType()
-  return sceneType
-end
-
-function scene.load(s,skipIntro)
-  if skipIntro == nil and sceneType ~= "title" then
-    sceneType = "start"
-    startUpdate = true
-    startTimer = constTimer
-  end
+function scene.load(s)
   sceneNum = s
   
   kb.load()
   bg.load(sceneData[sceneNum])
-  objectManager.load(sceneData[sceneNum].objectData)
+  manager.load(sceneData[sceneNum].objectData)
 end
 
 function scene.update()
-  objectManager.update()
+  manager.update()
 end
 
 function scene.draw()
   bg.draw()
-  objectManager.draw()
+  manager.draw()
 end
 
-function scene.win()
-  sceneType = "next"
-  sound.play("sfx_win")
-  startTimer = constTimer
+function scene.next()
+  sceneNum = sceneNum + 1
+  scene.load(sceneNum)
 end
 
-function scene.restart(skipIntro)
-  scene.load(sceneNum,skipIntro)
+function scene.restart()
+  scene.load(sceneNum)
 end
 
 return scene

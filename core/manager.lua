@@ -8,7 +8,7 @@ basis. The intent here is to mimic the basic functionality of a blank object
 in Game Maker.
 --]]
 
-local objectManager = {}
+local manager = {}
 local objectTable = {}
 local objectToDestroy = {}
 local instanceID 
@@ -29,7 +29,7 @@ end
 
 defineClasses()
 
-function objectManager.addObject(classIndex,x,y)
+function manager.addObject(classIndex,x,y)
   local obj = Class[classIndex](instanceID,x,y)
   table.insert(objectTable,obj)
   
@@ -38,11 +38,11 @@ function objectManager.addObject(classIndex,x,y)
   return obj
 end
 
-function objectManager.removeObject(id)
+function manager.removeObject(id)
   table.insert(objectToDestroy,id)
 end
 
-function objectManager.getObject(id)
+function manager.getObject(id)
   for i,obj in ipairs(objectTable) do
     if obj.id == id then
       return obj
@@ -52,7 +52,7 @@ function objectManager.getObject(id)
   return nil
 end
 
-function objectManager.getObjectByTag(tag)
+function manager.getObjectByTag(tag)
   for i,obj in ipairs(objectTable) do
     if obj[tag] then
       return obj
@@ -62,7 +62,7 @@ function objectManager.getObjectByTag(tag)
   return nil
 end
 
-function objectManager.checkObjects(f,arg)
+function manager.checkObjects(f,arg)
   -- perform a passed function on all objects 
   -- immediately return true if any f(obj) returns true
   for i,obj in ipairs(objectTable) do
@@ -73,7 +73,7 @@ function objectManager.checkObjects(f,arg)
   return nil
 end  
 
-function objectManager.load(OBJECTDATA)
+function manager.load(OBJECTDATA)
   objectTable = {}
   objectToDestroy = {}
   instanceID = 1
@@ -84,11 +84,11 @@ function objectManager.load(OBJECTDATA)
     if obj.class == "skull" then
       hostileTotal = hostileTotal + 1
     end
-    objectManager.addObject(obj.class,obj.x,obj.y)
+    manager.addObject(obj.class,obj.x,obj.y)
   end
 end
 
-function objectManager.update()
+function manager.update()
   for i,obj in ipairs(objectTable) do
     obj:update()
   end 
@@ -111,18 +111,18 @@ function objectManager.update()
   objectToDestroy = {}
 end
 
-function objectManager.draw()
+function manager.draw()
   for i,obj in ipairs(objectTable) do
     obj:draw()
   end 
 end
 
-function objectManager.getClass(str)
+function manager.getClass(str)
   return Class[str]
 end
 
-function objectManager.getObjectCount()
+function manager.getObjectCount()
   return #objectTable
 end
 
-return objectManager
+return manager

@@ -1,7 +1,7 @@
-local ObjectParent = require "library.classic"
-local Object = ObjectParent:extend()
+local objectParent = require "library.classic"
+local object = objectParent:extend()
 
-function Object:new(id, x, y)
+function object:new(id, x, y)
   self.id = id
   self.x = x
   self.y = y
@@ -24,33 +24,33 @@ function Object:new(id, x, y)
   self:create()
 end
 
-function Object:create()
+function object:create()
   -- define on a per-class basis
 end
 
-function Object:update()
+function object:update()
   self:step()
 
   -- updating sprite animation
 end
 
-function Object:step()
+function object:step()
   -- define on a per-class basis
 end
 
-function Object:draw()
+function object:draw()
   if self.sprite ~= nil then
      love.graphics.draw(self.sprite,self.x+self.origin_offset,self.y+self.origin_offset,self.rotation,self.flip,1,self.origin_offset,self.origin_offset) 
   end
 end
 
-function Object:move(h,v)
+function object:move(h,v)
   self.x = self.x + h
   self.y = self.y + v
   self:updateMask()
 end
 
-function Object:moveIfNoSolid()
+function object:moveIfNoSolid()
   local old_x, old_y = self.x, self.y
   
   self:move(self.hspeed,0)
@@ -70,12 +70,12 @@ function Object:moveIfNoSolid()
   end  
 end
 
-function Object:updateMask()
+function object:updateMask()
   self.mask.x = self.x + self.mask.x_offset
   self.mask.y = self.y + self.mask.y_offset 
 end
 
-function Object:moveToContactHor(obj)
+function object:moveToContactHor(obj)
   local pushback
   if self.mask.x < obj.mask.x then
     pushback = self.mask.x + self.mask.width - obj.mask.x
@@ -86,7 +86,7 @@ function Object:moveToContactHor(obj)
   end
 end
 
-function Object:moveToContactVert(obj)
+function object:moveToContactVert(obj)
   local pushback
   if self.mask.y < obj.mask.y then
     pushback = self.mask.y + self.mask.height - obj.mask.y
@@ -97,17 +97,17 @@ function Object:moveToContactVert(obj)
   end
 end
 
-function Object:distanceToObject(obj)
+function object:distanceToObject(obj)
   local dist = ((obj.x-self.x)^2+(obj.y-self.y)^2)^0.5
   return dist
 end
 
-function Object:setVector(hspeed,vspeed)
+function object:setVector(hspeed,vspeed)
   self.hspeed = hspeed
   self.vspeed = vspeed
 end
 
-function Object:setVectorAngle(angle,speed,rotate)      
+function object:setVectorAngle(angle,speed,rotate)      
   if rotate then
     self.rotation = angle + 1.571  -- rotate sprite
   end
@@ -116,13 +116,13 @@ function Object:setVectorAngle(angle,speed,rotate)
   self.vspeed = speed * math.sin(angle - 1.591)
 end
 
-function Object:getVectorAngle(target_x,target_y)
+function object:getVectorAngle(target_x,target_y)
   local angle = math.atan2((target_y - self.y), (target_x - self.x))
   
   return angle
 end
 
-function Object:setVectorAimed(angle, speed, rotate, offset)       
+function object:setVectorAimed(angle, speed, rotate, offset)       
   if offset then 
     angle = angle + offset
   end
@@ -135,7 +135,7 @@ function Object:setVectorAimed(angle, speed, rotate, offset)
   self.vspeed = speed * math.sin(angle)
 end
 
-function Object:checkCollision(tag)
+function object:checkCollision(tag)
   local function f(obj,tag)
     local collision = false
     if (tag == nil or obj[tag] ~= nil) and (self.id ~= obj.id) then
@@ -148,23 +148,23 @@ function Object:checkCollision(tag)
     return collision
   end
       
-  return objectManager.checkObjects(f,tag)
+  return manager.checkObjects(f,tag)
 end
 
-function Object:instanceCreate(class,x,y)
+function object:instanceCreate(class,x,y)
   -- TO FIX 
   -- If an object calls this function in its creation code, they'll both have
   -- the same instance ID. Make a queue of objects to create and create them at the end.
   -- Make sure THOSE objects can create objects.
   
-  return objectManager.addObject(class,x,y)
+  return manager.addObject(class,x,y)
 end
 
 -- can target another ID, or the object can destroy itself
-function Object:instanceDestroy(targetID)
+function object:instanceDestroy(targetID)
   local id = targetID or self.id
 
-  return objectManager.removeObject(id)
+  return manager.removeObject(id)
 end
 
-return Object
+return object

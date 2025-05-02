@@ -1,3 +1,6 @@
+-- define window information
+local gameTitle = "Ken Griffey Jr.'s Horrible Tower"
+
 global = {}
 global.WINDOW_WIDTH = 640
 global.WINDOW_HEIGHT = 480
@@ -5,39 +8,41 @@ global.TILE_DIMENSION = 16
 global.current_width = global.WINDOW_WIDTH
 global.current_height = global.WINDOW_HEIGHT
 
-local gameTitle = "Tank Beartalion"
-local fontPath = "assets/fonts/gunplay.otf"
-local fontSize = 32
-
-Object = require "core.object" 
-objectManager = require "core.objectManager"
+-- import core engine
+object = require "core.object" 
+manager = require "core.manager"
 asset = require "core.asset"
 scene = require "core.scene"
 sound = require "core.sound"
-bg = require "core.bg"
-kb = require "core.kb"
+bg = require "core.background"
+kb = require "core.keyboard"
 util = require "core.util"
 
+-- TO MOVE: font 
+local fontPath = "assets/fonts/gunplay.otf"
+local fontSize = 32
+
+-- define frame data
 local tickPeriod = 1/60
 local accumulator = 0.0
-
 local frameCount = 0
 local dtCount = 0
 local fps = 0
-
+local debug = true
 local frameCanvas = love.graphics.newCanvas(global.WINDOW_WIDTH,global.WINDOW_HEIGHT)
 
-local gameStart = false
-local gameActive = false
-
 function love.load()
+  math.randomseed(os.time())
+  
+  -- window settings
   love.graphics.setDefaultFilter("linear", "linear", 1)
   love.window.setTitle(gameTitle)
   love.window.setVSync( 1 )  
+  
+  -- TO MOVE
   font = love.graphics.newFont(fontPath,fontSize,"mono")
   love.graphics.setFont(font)
-
-  math.randomseed(os.time())
+  
   scene.load(1)
 end
 
@@ -47,7 +52,6 @@ function love.update(dt)
   dtCount = dtCount + delta
   accumulator = accumulator + delta
   if accumulator >= tickPeriod then
-    kb.update()
     scene.update()
     accumulator = accumulator - tickPeriod
     
@@ -65,8 +69,10 @@ function love.draw()
   love.graphics.setCanvas(frameCanvas)
   scene.draw()
   
-  --love.graphics.printf(fps,10,10, 200, "left")
-  --love.graphics.printf(objectManager.getObjectCount(),10,30, 200, "left")
+  if debug then
+    love.graphics.printf(fps,10,10, 200, "left")
+    love.graphics.printf(manager.getObjectCount(),10,40, 200, "left")
+  end
    
   love.graphics.setCanvas()
   

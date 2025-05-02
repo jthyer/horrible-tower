@@ -14,22 +14,8 @@ local function defineSprites()
   for i, file in ipairs(files) do
     if string.sub(file, -4) == '.png' then
       local index = string.sub(file,1,string.len(file)-4)
-      local filePath = "assets/sprites/" .. file
-      asset.sprite[index] = love.graphics.newImage(filePath)
-    end
-  end
-end
-
-local function defineBackgrounds()
-  local dir = "assets/backgrounds"
-  local files = love.filesystem.getDirectoryItems(dir)
-  
-  for i, file in ipairs(files) do
-    if string.sub(file, -4) == '.png' then
-      local index = string.sub(file,1,string.len(file)-4)
       local filePath = dir .. "/" .. file
-      local extension = string.sub(file, -4)
-      asset.bg[index] = love.graphics.newImage(filePath)
+      asset.sprite[index] = love.graphics.newImage(filePath)
     end
   end
 end
@@ -50,8 +36,36 @@ local function defineSounds()
   end
 end
 
+local function defineBackgrounds()
+  local dir = "assets/backgrounds"
+  local files = love.filesystem.getDirectoryItems(dir)
+  
+  for i, file in ipairs(files) do
+    if string.sub(file, -4) == '.png' then
+      local index = string.sub(file,1,string.len(file)-4)
+      local filePath = dir .. "/" .. file
+      asset.bg[index] = love.graphics.newImage(filePath)
+    end
+  end
+end
+
+local function defineTilesets()
+  local dir = "assets/tiles"
+  local files = love.filesystem.getDirectoryItems(dir)
+  
+  for i, file in ipairs(files) do
+    if string.sub(file, -4) == '.png' then
+      local index = string.sub(file,1,string.len(file)-4)
+      local filePath = dir .. "/" .. file
+      asset.tileset[index] = love.graphics.newImage(filePath)
+      print(filePath)
+    end
+  end 
+end
+
 defineSprites()
 defineBackgrounds()
 defineSounds()
+defineTilesets()
 
 return asset
