@@ -1,14 +1,8 @@
--- define window information
-local gameTitle = "Ken Griffey Jr.'s Horrible Tower"
-
-global = {}
-global.WINDOW_WIDTH = 640
-global.WINDOW_HEIGHT = 480
-global.TILE_DIMENSION = 16
-global.current_width = global.WINDOW_WIDTH
-global.current_height = global.WINDOW_HEIGHT
+-- main.lua
+--  Loads core engine, runs game loop, handles frame data, game quitting, fullscreen.
 
 -- import core engine
+window = require "core.window"
 object = require "core.object" 
 manager = require "core.manager"
 asset = require "core.asset"
@@ -16,55 +10,59 @@ scene = require "core.scene"
 sound = require "core.sound"
 bg = require "core.background"
 kb = require "core.keyboard"
+text = require "core.text"
 util = require "core.util"
 
--- TO MOVE: font 
-local fontPath = "assets/fonts/gunplay.otf"
-local fontSize = 32
+-- import game-specific info
+info = require "source.info"
 
 -- define frame data
-local tickPeriod = 1/60
+local FPS_TARGET = 60
+local TICK_PERIOD = 1/FPS_TARGET
 local accumulator = 0.0
 local frameCount = 0
 local dtCount = 0
 local fps = 0
 local debug = true
-local frameCanvas = love.graphics.newCanvas(global.WINDOW_WIDTH,global.WINDOW_HEIGHT)
+local frameCanvas = love.graphics.newCanvas(window.WINDOW_WIDTH,window.WINDOW_HEIGHT)
+local changeFullscreen
 
+-- load initial game state on launch
 function love.load()
   math.randomseed(os.time())
   
   -- window settings
   love.graphics.setDefaultFilter("linear", "linear", 1)
-  love.window.setTitle(gameTitle)
+  love.window.setTitle(info.gameTitle)
   love.window.setVSync( 1 )  
-  
-  -- TO MOVE
-  font = love.graphics.newFont(fontPath,fontSize,"mono")
-  love.graphics.setFont(font)
+    
+  text.setFont(info.defaultFont,info.defaultFontSize)
   
   scene.load(1)
 end
 
+-- updates every frame, caps fps
 function love.update(dt)
   local delta = dt
 
   dtCount = dtCount + delta
   accumulator = accumulator + delta
-  if accumulator >= tickPeriod then
+  if accumulator >= TICK_PERIOD then
     scene.update()
-    accumulator = accumulator - tickPeriod
+    accumulator = accumulator - TICK_PERIOD
     
     frameCount = frameCount + 1
 
-    if frameCount == 60 then
-      fps = math.floor(6000/dtCount)/100
+    if frameCount == FPS_TARGET then
+      fps = math.floor((FPS_TARGET*100)/dtCount)/100
       frameCount = 0
       dtCount = 0
     end
   end  
 end
 
+-- draw step, runs after update step
+-- draws to canvas first, then to the screen depending on window settings
 function love.draw()
   love.graphics.setCanvas(frameCanvas)
   scene.draw()
@@ -77,16 +75,18 @@ function love.draw()
   love.graphics.setCanvas()
   
   local frameScale = math.min(
-    global.current_width / global.WINDOW_WIDTH,
-    global.current_height / global.WINDOW_HEIGHT
+    window.current_width / window.WINDOW_WIDTH,
+    window.current_height / window.WINDOW_HEIGHT
   )
   
-  local frameX = (global.current_width - (global.WINDOW_WIDTH*frameScale)) / 2
-  local frameY = (global.current_height - (global.WINDOW_HEIGHT*frameScale)) / 2
+  local frameX = (window.current_width - (window.WINDOW_WIDTH*frameScale)) / 2
+  local frameY = (window.current_height - (window.WINDOW_HEIGHT*frameScale)) / 2
  
-  love.graphics.draw(frameCanvas,frameX,frameY,0,frameScale,frameScale)--]]
+  love.graphics.draw(frameCanvas,frameX,frameY,0,frameScale,frameScale)
 end
 
+-- quit the game with escape, change fullscreen with f
+-- TODO: make a proper pause screen/options menu
 function love.keypressed(key, scancode)
    if key == "escape" then
       love.event.quit()
@@ -97,13 +97,13 @@ function love.keypressed(key, scancode)
   end
 end
 
-function changeFullscreen()  
+function changeFullscreen() 
   local fullscreen = love.window.getFullscreen()
   
   love.window.setFullscreen(not fullscreen)
   if fullscreen then
-    global.current_width, global.current_height = global.WINDOW_WIDTH,global.WINDOW_HEIGHT
+    window.current_width, window.current_height = window.WINDOW_WIDTH,window.WINDOW_HEIGHT
   else
-    global.current_width, global.current_height = love.graphics.getDimensions()
+    window.current_width, window.current_height = love.graphics.getDimensions()
   end
 end

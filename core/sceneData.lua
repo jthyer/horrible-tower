@@ -1,15 +1,9 @@
---[[
-This is the folder where I read in my ogmo json files and turn them into 
-actual rooms. 
-
-This is a three step process: 
-  - Reading the tile data
-  - Reading the solid objects (every game has a "wall" class of objects)
-  - Reading the remaining objects
-  
-This feels pretty good! I changed it so that it just reads every json file
-in the scene directory instead of needing to hardcode a number of scenes.
---]]
+-- sceneData.lua 
+--  Reads in my ogmo json files and turn them into actual scenes.
+--  This is a three step process: 
+--  * Reading the tile data
+--  * Reading the solid objects (every game has a "wall" class of objects)
+--  * Reading the remaining objects
 
 local json = require("library.json")
 local sceneLoad, loadTiles, loadObjects
@@ -31,8 +25,8 @@ function sceneLoad()
   
       sceneData[numScenes].width = jsonData["width"]
       sceneData[numScenes].height = jsonData["height"]  
-      sceneData[numScenes].tileWidth = jsonData["width"] / global.TILE_DIMENSION
-      sceneData[numScenes].tileHeight = jsonData["height"] / global.TILE_DIMENSION 
+      sceneData[numScenes].tileWidth = jsonData["width"] / window.TILE_DIMENSION
+      sceneData[numScenes].tileHeight = jsonData["height"] / window.TILE_DIMENSION 
   
       loadTiles(numScenes,sceneData,jsonData)
       loadObjects(numScenes,sceneData,jsonData)
@@ -43,6 +37,8 @@ function sceneLoad()
 end
 
 function loadTiles(scene,sceneData,jsonData)
+  sceneData[scene].tileset = jsonData["layers"][3]["tileset"]
+  
   sceneData[scene].tileData = {} 
   for i = 1, sceneData[scene].tileHeight do
     local row = {}

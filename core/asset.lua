@@ -1,5 +1,13 @@
+-- asset.lua
+--  Define all the games' audiovisual assets in a way lua can interpret.
+--  This file doesn't return functions for the other files to use like 
+--  the others. Instead it's one big table of assets. These assets aren't
+--  locked in any way, but they should be treated as constants.
+--
+--  There's definitely a way to do this in one simpler function, but I 
+--  don't care enough to figure it out right now.
+
 local asset = {}
-local files = {}
 
 asset.sprite = {}
 asset.sound = {}
@@ -58,14 +66,28 @@ local function defineTilesets()
       local index = string.sub(file,1,string.len(file)-4)
       local filePath = dir .. "/" .. file
       asset.tileset[index] = love.graphics.newImage(filePath)
-      print(filePath)
     end
   end 
 end
 
+local function defineFonts()
+  local dir = "assets/fonts"
+  local files = love.filesystem.getDirectoryItems(dir)
+  
+  for i, file in ipairs(files) do
+    if string.sub(file, -4) == '.ttf' or string.sub(file, -4) == '.otf' then
+      local index = string.sub(file,1,string.len(file)-4)
+      local filePath = dir .. "/" .. file
+      asset.font[index] = filePath 
+        -- only defining the path here so text.lua can make different sized fonts
+    end
+  end  
+end
+
 defineSprites()
-defineBackgrounds()
 defineSounds()
+defineBackgrounds()
 defineTilesets()
+defineFonts()
 
 return asset

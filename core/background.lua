@@ -2,17 +2,13 @@ local background = {}
 
 local quads = {}
 local canvas
-local dim = global.TILE_DIMENSION
+local dim = window.TILE_DIMENSION
 local tileset
 local x, y 
-
--- private function declarations
 local setCanvas
 
 function background.load(BGDATA)
-  -- make it so you can change tilesets between levels later
-  -- the tileset name is stored in the json export
-  tileset = asset.tileset["tile_labyrinth"]
+  tileset = asset.tileset[BGDATA.tileset]
   
   local image_width = tileset:getWidth()
   local image_height = tileset:getHeight()
@@ -47,9 +43,6 @@ function setCanvas(BGDATA)
     
   background.canvasWidth = canvasWidth
   background.canvasHeight = canvasHeight
-  
-  x = 0
-  y = 0
   
   -- draw back layer
   canvas = love.graphics.newCanvas(canvasWidth,canvasHeight)

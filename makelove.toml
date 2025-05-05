@@ -1,4 +1,4 @@
-name = "Tank-Beartalion"
+name = "Ken-Griffey-Jrs-Horrible-Tower"
 default_targets = ["win32", "win64", "macos", "appimage"]
 build_directory = "makelove-build"
 

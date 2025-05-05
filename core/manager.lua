@@ -78,8 +78,6 @@ function manager.load(OBJECTDATA)
   objectToDestroy = {}
   instanceID = 1
     
-  hostileKills, hostileTotal = 0, 0
-    
   for i,obj in ipairs(OBJECTDATA) do
     if obj.class == "skull" then
       hostileTotal = hostileTotal + 1
