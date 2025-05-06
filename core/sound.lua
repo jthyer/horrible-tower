@@ -4,9 +4,26 @@
 
 local sound = {}
 
-function sound.play(snd)
-  local currentSound = asset.sound[snd]:clone()
+local music 
+
+function sound.play(index)
+  local currentSound = asset.sound[index]:clone()
   currentSound:play()
+end
+
+function sound.musicPlay(index)
+  if music ~= nil then
+    sound.musicStop()
+  end
+  
+  music = asset.sound[index]
+  music:setLooping(true)
+  music:play()
+end
+
+function sound.musicStop()
+  music:stop()
+  music = nil
 end
 
 return sound

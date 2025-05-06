@@ -8,13 +8,14 @@ manager = require "core.manager"
 asset = require "core.asset"
 scene = require "core.scene"
 sound = require "core.sound"
-bg = require "core.background"
+background = require "core.background"
 kb = require "core.keyboard"
 text = require "core.text"
 util = require "core.util"
 
 -- import game-specific info
 info = require "source.info"
+init = require "source.init"
 
 -- define frame data
 local FPS_TARGET = 60

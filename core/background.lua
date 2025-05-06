@@ -1,11 +1,20 @@
+-- background.lua
+--  Draw the background canvas for every scene. This includes two parts:
+--  1) The background texture, an image which loops until it covers the screen.
+--  2) The tiles for a specific scene.
+--
+--  Later, I want to have multiple layers of background textures, and I want them
+--  to be able to scroll in parallax.
+ 
 local background = {}
 
 local quads = {}
 local canvas
 local dim = window.TILE_DIMENSION
 local tileset
+local texture
 local x, y 
-local setCanvas
+local setCanvas, drawColor, drawTexture, drawTiles
 
 function background.load(BGDATA)
   tileset = asset.tileset[BGDATA.tileset]
@@ -24,36 +33,57 @@ function background.load(BGDATA)
         j*dim, i*dim, dim, dim, image_width,image_height))
     end
   end 
-
+  
+  local textureIndex = init.backgroundTexture()
+  texture = asset.bg[textureIndex]
+  
   setCanvas(BGDATA)
 end
 
 function background.draw()
   love.graphics.draw(canvas,0,0)
 end
-  
+ 
 function setCanvas(BGDATA)
-  local bgAsset = asset.bg["bg_stars"]
-  local bgWidth = bgAsset:getWidth()
-  local bgHeight = bgAsset:getHeight()
-  local canvasWidth = BGDATA.width * 1
-  local canvasHeight = BGDATA.height * 1
-  local numHor = math.ceil(canvasWidth / bgWidth)
-  local numVert = math.ceil(canvasHeight / bgHeight)
-    
-  background.canvasWidth = canvasWidth
-  background.canvasHeight = canvasHeight
-  
-  -- draw back layer
-  canvas = love.graphics.newCanvas(canvasWidth,canvasHeight)
+  canvas = love.graphics.newCanvas(BGDATA.width,BGDATA.height)
   love.graphics.setCanvas(canvas)
+  
+  drawColor(BGDATA)
+  drawTexture(BGDATA)
+  drawTiles(BGDATA)
+
+  love.graphics.setCanvas()
+end
+
+function drawColor(BGDATA)
+  -- draw default color in case no texture is present
+  local r, g, b = init.backgroundColor()
+  love.graphics.setColor(r,g,b,1)
+  
+  love.graphics.rectangle("fill",0,0,BGDATA.width,BGDATA.height)
+  
+  love.graphics.setColor(1,1,1,1)
+end
+
+function drawTexture(BGDATA)
+  -- loop texture until it covers the whole background
+  if texture == nil then
+    return
+  end  
+  
+  local textureWidth = texture:getWidth()
+  local textureHeight = texture:getHeight()
+  local numHor = math.ceil(BGDATA.width / textureWidth)
+  local numVert = math.ceil(BGDATA.height / textureHeight)
   
   for i=1,numHor do
     for j=1,numVert do
-      love.graphics.draw(bgAsset,(i-1)*bgWidth,(j-1)*bgHeight)
+      love.graphics.draw(texture,(i-1)*textureWidth,(j-1)*textureHeight)
     end
   end
+end
 
+function drawTiles(BGDATA)
   -- draw tiles
   for i,v in ipairs(BGDATA.tileData) do
     for j,v2 in ipairs(v) do
@@ -62,8 +92,11 @@ function setCanvas(BGDATA)
       end
     end
   end 
-
-  love.graphics.setCanvas()
 end
+
+--[[ can't set texture until I figure out how to reload the canvas during runtime
+function background.setTexture(index)
+  texture = asset.bg[index]
+end]]--
 
 return background

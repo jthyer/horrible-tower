@@ -18,8 +18,9 @@ function scene.load(s)
   sceneNum = s
   
   kb.load()
-  bg.load(sceneData[sceneNum])
+  background.load(sceneData[sceneNum])
   manager.load(sceneData[sceneNum].objectData)
+  init.load(sceneNum)
 end
 
 function scene.update()
@@ -27,7 +28,7 @@ function scene.update()
 end
 
 function scene.draw()
-  bg.draw()
+  background.draw()
   manager.draw()
 end
 

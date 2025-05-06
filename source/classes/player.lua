@@ -19,7 +19,6 @@ end
 function player:step()  
   self:readMovement()
   self:checkEnemyCollision()
-  self:viewSet()
 end
 
 function player:readMovement()
@@ -31,44 +30,12 @@ function player:readMovement()
   self.vspeed = 0
 
   -- read keyboard input
-  if kb.actionPressed() then
-    sound.play("sfx_shoot")
-    local bullet = self:instanceCreate("bullet",self.x+10,self.y+10)
-    bullet:setVectorAimed(self.rotation-math.rad(90),BULLETSPEED)
-    bullet.enemy = nil
-    bullet.playerBullet = true
+  if kb.left() then 
+    self.hspeed = -SPEED
+  elseif kb.right() then
+    self.hspeed = SPEED
   end
-  
-  if kb.shift() then
-    if kb.left() then    
-      self.hspeed = SPEED * math.cos(self.rotation - 3.1416) / 2
-      self.vspeed = SPEED * math.sin(self.rotation - 3.1416) / 2
-    elseif kb.right() then
-      self.hspeed = SPEED * math.cos(self.rotation) / 2
-      self.vspeed = SPEED * math.sin(self.rotation) / 2
-    end
-  else 
-    if kb.left() then    
-      self.rotation = self.rotation - SPINSPEED  
-    elseif kb.right() then
-      self.rotation = self.rotation + SPINSPEED   
-    end    
-  end
-
-  if kb.up() and not (kb.left() or kb.right()) then 
-    self.hspeed = SPEED * math.cos(self.rotation - 1.591)
-    self.vspeed = SPEED * math.sin(self.rotation - 1.591)
-  elseif kb.down() and not (kb.left() or kb.right()) then
-    self.hspeed = SPEED * math.cos(self.rotation + 1.591) * .5
-    self.vspeed = SPEED * math.sin(self.rotation + 1.591) * .5
-  end
-  
-  -- set speed
-  if self.hspeed ~= 0 and self.vspeed ~= 0 then
-    self.hspeed = self.hspeed * .71
-    self.vspeed = self.vspeed * .71
-  end
-  
+    
   self:moveIfNoSolid()
 end
 
@@ -78,10 +45,6 @@ function player:checkEnemyCollision()
   if (collide) then
     self:die()
   end
-end
-
-function player:viewSet()
-
 end
 
 function player:die()
