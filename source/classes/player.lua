@@ -30,9 +30,9 @@ function player:readMovement()
   self.vspeed = 0
 
   -- read keyboard input
-  if kb.left() then 
+  if keyboard.left() then 
     self.hspeed = -SPEED
-  elseif kb.right() then
+  elseif keyboard.right() then
     self.hspeed = SPEED
   end
     

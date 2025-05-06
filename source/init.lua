@@ -21,7 +21,7 @@ end
 
 -- return default background texture 
 function init.backgroundTexture()
-  return nil--"bg_stars"
+  return "bg_stars"
 end
 
 return init

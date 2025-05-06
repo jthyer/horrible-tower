@@ -1,26 +1,22 @@
---[[
-SCENE.LUA
-
-A scene is basically a room from Game Maker. It reads tile and object data
-from my editor's scene files in the "scene" folder into a big table, then draws
-that data on the screen. 
+-- scene.lua
+--  A scene is basically a room from Game Maker. It reads tile and object data
+--  from my editor's scene files in the "scene" folder into a big table, loads
+--  the background and object managers, runs the manager update function, and
+--  draws everything to the screen. 
 --]]
 
 local scene = {}
 local sceneData = require("core.sceneData")
-local sceneNum
+local sceneNumber
+local sceneTotal = #sceneData
 
-function scene.getSceneNum()
-  return sceneNum
-end
-
-function scene.load(s)
-  sceneNum = s
+function scene.load(i)
+  sceneNumber = i
   
-  kb.load()
-  background.load(sceneData[sceneNum])
-  manager.load(sceneData[sceneNum].objectData)
-  init.load(sceneNum)
+  keyboard.load()
+  background.load(sceneData[sceneNumber])
+  manager.load(sceneData[sceneNumber].objectData)
+  init.load(sceneNumber)
 end
 
 function scene.update()
@@ -32,13 +28,29 @@ function scene.draw()
   manager.draw()
 end
 
+-- TODO: track scenes with indexes for non-linear traversal
+function scene.getSceneNumber()
+  return sceneNumber
+end
+
 function scene.next()
-  sceneNum = sceneNum + 1
-  scene.load(sceneNum)
+  if sceneNumber < sceneTotal then
+    sceneNumber = sceneNumber + 1
+  end
+  
+  scene.load(sceneNumber)
+end
+
+function scene.previous()
+  if sceneNumber > 1 then
+    sceneNumber = sceneNumber - 1
+  end
+  
+  scene.load(sceneNumber)
 end
 
 function scene.restart()
-  scene.load(sceneNum)
+  scene.load(sceneNumber)
 end
 
 return scene

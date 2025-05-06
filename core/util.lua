@@ -1,4 +1,5 @@
-
+-- util.lua
+--  Basic utility functions. Only pure functions with zero side effects allowed.
 
 local util = {}
 

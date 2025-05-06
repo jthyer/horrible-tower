@@ -9,7 +9,7 @@ asset = require "core.asset"
 scene = require "core.scene"
 sound = require "core.sound"
 background = require "core.background"
-kb = require "core.keyboard"
+keyboard = require "core.keyboard"
 text = require "core.text"
 util = require "core.util"
 

@@ -1,11 +1,15 @@
 -- sceneData.lua 
---  Reads in my ogmo json files and turn them into actual scenes.
+--  Transforms my ogmo json files into readable lua tables for scene.lua.
 --  This is a three step process: 
 --  * Reading the tile data
 --  * Reading the solid objects (every game has a "wall" class of objects)
 --  * Reading the remaining objects
+--
+--  This code is complex but robust. I've used it for several completed projects.
 
 local json = require("library.json")
+
+local dim = window.TILE_DIMENSION 
 local sceneLoad, loadTiles, loadObjects
 
 function sceneLoad()
@@ -25,8 +29,8 @@ function sceneLoad()
   
       sceneData[numScenes].width = jsonData["width"]
       sceneData[numScenes].height = jsonData["height"]  
-      sceneData[numScenes].tileWidth = jsonData["width"] / window.TILE_DIMENSION
-      sceneData[numScenes].tileHeight = jsonData["height"] / window.TILE_DIMENSION 
+      sceneData[numScenes].tileWidth = jsonData["width"] / dim
+      sceneData[numScenes].tileHeight = jsonData["height"] / dim
   
       loadTiles(numScenes,sceneData,jsonData)
       loadObjects(numScenes,sceneData,jsonData)
@@ -64,8 +68,8 @@ function loadObjects(scene,sceneData,jsonData)
       if coord == 0 then
         local object = {}
         object.class = "wall"
-        object.x = (i2-1)*16
-        object.y = (i-1)*16
+        object.x = (i2-1)*dim
+        object.y = (i-1)*dim
         table.insert(sceneData[scene].objectData,object)
       end
     end
