@@ -4,12 +4,12 @@
 
 local init = {}
 
-function init.load(sceneNum)
+function init.load(sceneNumber)
   manager.addObject("player",0,0)
   
-  if sceneNum == 1 then
+  if sceneNumber == 1 then
     
-  elseif sceneNum == 2 then
+  elseif sceneNumber == 2 then
     
   end
 end
