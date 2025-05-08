@@ -5,7 +5,9 @@
 local init = {}
 
 function init.load(sceneNumber)
-  manager.addObject("player",0,0)
+  for i = 1, 20, 1 do
+    manager.addObject("player",(i-1)*32,0)
+  end
   
   if sceneNumber == 1 then
     

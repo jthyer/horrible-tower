@@ -1,8 +1,8 @@
+local player = object:extend()
+
 local SPEED = 3;
 local SPINSPEED = .028 --0.025
 local BULLETSPEED = 4
-
-local player = object:extend()
 
 function player:create()
   self.sprite = asset.sprite["spr_player"]
@@ -51,11 +51,6 @@ function player:die()
   sound.play("sfx_playerDead")
   self:instanceDestroy()
   scene.restart()
-end
-
-function player:draw()
-  love.graphics.draw(self.sprite,self.x+self.origin_offset,self.y+self.origin_offset,
-    self.rotation,self.flip,1,self.origin_offset,self.origin_offset) 
 end
 
 return player

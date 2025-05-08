@@ -1,15 +1,13 @@
 local objectParent = require "library.classic"
 local object = objectParent:extend()
 
-function object:new(id, x, y)
+function object:new(id, class, x, y)
   self.id = id
+  self.class = class
   self.x = x
   self.y = y
   self.width = 32
   self.height = 32  
-  self.rotation = 0
-  self.origin_offset = 16
-  self.flip = 1
   self.hspeed = 0
   self.vspeed = 0
   
@@ -40,7 +38,7 @@ end
 
 function object:draw()
   if self.sprite ~= nil then
-     love.graphics.draw(self.sprite,self.x+self.origin_offset,self.y+self.origin_offset,self.rotation,self.flip,1,self.origin_offset,self.origin_offset) 
+     love.graphics.draw(self.sprite,self.x,self.y,0,1,1) 
   end
 end
 
