@@ -59,9 +59,7 @@ function drawColor(BGDATA)
   -- draw default color in case no texture is present
   local r, g, b = init.backgroundColor()
   love.graphics.setColor(r,g,b,1)
-  
   love.graphics.rectangle("fill",0,0,BGDATA.width,BGDATA.height)
-  
   love.graphics.setColor(1,1,1,1)
 end
 
@@ -93,10 +91,5 @@ function drawTiles(BGDATA)
     end
   end 
 end
-
---[[ can't set texture until I figure out how to reload the canvas during runtime
-function background.setTexture(index)
-  texture = asset.bg[index]
-end]]--
 
 return background
