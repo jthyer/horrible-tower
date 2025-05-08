@@ -1,6 +1,9 @@
--- sound.lua
---  My most redundant interace. Just a few things I want that Love
---  doesn't pack in with the sound player out of the box.
+--[[
+sound.lua
+
+My most redundant interace. Just a few things I want that Love
+doesn't pack in with the sound player out of the box.
+]]--
 
 local sound = {}
 
