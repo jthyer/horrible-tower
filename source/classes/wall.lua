@@ -1,13 +1,7 @@
 local wall = object:extend()
 
-function wall:create()
+function wall:tag()
   self.solid = true  
-  
-  self.origin_offset = 8
-  self.width = 16
-  self.height = 16
-  self.mask.width = 16
-  self.mask.height = 16
 end
 
 function wall:update()

@@ -1,14 +1,17 @@
--- manager.lua
---  The manager file handles all the objects for a given scene, and offers an
---  interface for objects to interact with other objects.
---
---  Objects are defined on a scene by scene basis. The object table is completely
---  emptied between scenes. 
+--[[
+manager.lua
 
---  All the implementation for the basic game world object is done in object.lua.
---  Specific object implementations are done in the source folder on a per-game
---  basis. The intent here is to mimic the basic functionality of a blank object
---  in Game Maker.
+The manager file handles all the objects for a given scene, and offers an
+interface for objects to interact with other objects.
+
+Objects are defined on a scene by scene basis. The object table is completely
+emptied between scenes. 
+
+All the implementation for the basic game world object is done in object.lua.
+Specific object implementations are done in the source folder on a per-game
+basis. The intent here is to mimic the basic functionality of a blank object
+in Game Maker.
+]]--
 
 local manager = {}
 local objectTable = {}

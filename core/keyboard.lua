@@ -1,9 +1,15 @@
--- keyboard.lua
---  Love's keyboard commands don't give me access to all the information I want
---  for my games. I use this interface file to check for stuff like whether a 
---  key was released or pressed that frame. Plus it lets me put all my hard key
---  checks in one file. This way I can easily change them or add rebinding
---  down the line.
+--[[
+keyboard.lua
+
+Love's keyboard commands don't give me access to all the information I want
+for my games. I use this interface file to check for stuff like whether a 
+key was released or pressed that frame. Plus it lets me put all my hard key
+checks in one file. This way I can easily change them or add rebinding
+down the line.
+
+Todo:
+- Generic key check and key pressed function instead of specific ones.
+]]--
 
 local keyboard = {}
 

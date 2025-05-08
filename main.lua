@@ -1,5 +1,8 @@
--- main.lua
---  Loads core engine, runs game loop, handles frame data, game quitting, fullscreen.
+--[[
+main.lua
+
+Loads core engine, runs game loop, handles frame data, game quitting, fullscreen.
+]]--
 
 -- import core engine
 window = require "core.window"

@@ -1,6 +1,9 @@
--- info.lua
---  Global game info that needs to be defined per-game.
---  Default game resolution will likely live here ultimately.
+--[[
+info.lua
+ 
+Global game info that needs to be defined per-game.
+Default game resolution will likely live here ultimately.
+]]--
 
 local info = {}
 

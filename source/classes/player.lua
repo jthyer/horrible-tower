@@ -1,18 +1,13 @@
 local player = object:extend()
 
 local SPEED = 3;
-local SPINSPEED = .028 --0.025
-local BULLETSPEED = 4
 
-function player:create()
-  self.sprite = asset.sprite["spr_player"]
-  self.width = 32
-  self.height = 32
-  self.mask.width = 24
-  self.mask.height = 24
-  self.mask.x_offset = 4
-  self.mask.y_offset = 4
+function player:sprite()
+  self.sprite = asset.sprite["spr_player"] 
+  self:setMask(8,8,12,12)
+end
 
+function player:tag()
   self.player = true
 end
 

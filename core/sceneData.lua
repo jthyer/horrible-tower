@@ -1,11 +1,14 @@
--- sceneData.lua 
---  Transforms my ogmo json files into readable lua tables for scene.lua.
---  This is a three step process: 
---  * Reading the tile data
---  * Reading the solid objects (every game has a "wall" class of objects)
---  * Reading the remaining objects
---
---  This code is complex but robust. I've used it for several completed projects.
+--[[
+sceneData.lua 
+
+Transforms my ogmo json files into readable lua tables for scene.lua.
+This is a three step process: 
+* Reading the tile data
+* Reading the solid objects (every game has a "wall" class of objects)
+* Reading the remaining objects
+
+This code is complex but robust. I've used it for several completed projects.
+]]--
 
 local json = require("library.json")
 

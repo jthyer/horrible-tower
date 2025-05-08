@@ -1,6 +1,9 @@
--- text.lua
---  handles text rendering, managing fonts. will use this for text box borders
---  and the like down the line.
+--[[
+text.lua
+
+Handles text rendering, managing fonts. Will use this for text box borders
+and the like down the line.
+]]--
 
 local text = {}
 

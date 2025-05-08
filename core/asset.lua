@@ -1,11 +1,14 @@
--- asset.lua
---  Define all the games' audiovisual assets in a way lua can interpret.
---  This file doesn't return functions for the other files to use like 
---  the others. Instead it's one big table of assets. These assets aren't
---  locked in any way, but they should be treated as constants.
---
---  There's definitely a way to do this in one simpler function, but I 
---  don't care enough to figure it out right now.
+--[[
+asset.lua
+
+Define all the games' audiovisual assets in a way lua can interpret.
+This file doesn't return functions for the other files to use like 
+the others. Instead it's one big table of assets. These assets aren't
+locked in any way, but they should be treated as constants.
+
+There's definitely a way to do this in one simpler function, but I 
+don't care enough to figure it out right now.
+]]--
 
 local asset = {}
 

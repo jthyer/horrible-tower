@@ -1,10 +1,13 @@
--- background.lua
---  Draw the background canvas for every scene. This includes two parts:
---  1) The background texture, an image which loops until it covers the screen.
---  2) The tiles for a specific scene.
---
---  Later, I want to have multiple layers of background textures, and I want them
---  to be able to scroll in parallax.
+--[[
+background.lua
+
+Draw the background canvas for every scene. This includes two parts:
+1) The background texture, an image which loops until it covers the screen.
+2) The tiles for a specific scene.
+
+Later, I want to have multiple layers of background textures, and I want them
+to be able to scroll in parallax.
+]]--
  
 local background = {}
 

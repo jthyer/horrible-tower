@@ -1,6 +1,9 @@
--- window.lua
---  Defines window information. values are static for now. 
---  May allow per-game editing in a later version of engine.
+--[[
+window.lua
+
+Defines window information. values are static for now. 
+May allow per-game editing in a later version of engine.
+]]--
 
 local window = {}
 

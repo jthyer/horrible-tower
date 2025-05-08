@@ -1,8 +1,11 @@
--- scene.lua
---  A scene is basically a room from Game Maker. It reads tile and object data
---  from my editor's scene files in the "scene" folder into a big table, loads
---  the background and object managers, runs the manager update function, and
---  draws everything to the screen. 
+--[[
+scene.lua
+
+A scene is basically a room from Game Maker. It reads tile and object data
+from my editor's scene files in the "scene" folder into a big table, loads
+the background and object managers, runs the manager update function, and
+draws everything to the screen. 
+]]--
 
 local scene = {}
 local sceneData = require("core.sceneData")
