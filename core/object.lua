@@ -48,7 +48,7 @@ function object:new(id, class, x, y)
   end
 
   if self.mask == nil then
-    self:setMask(self.width,self.height,0,0)
+    self:setMask(0,0,self.width,self.height)
   end
   
   if self.tag then 
@@ -69,12 +69,15 @@ function object:update()
 end
 
 function object:draw()
+  -- debug:
+  -- love.graphics.rectangle("line",self.x + self.mask.x ,self.y + self.mask.y ,self.mask.width,self.mask.height)  
+  
   if self.sprite ~= nil then
      love.graphics.draw(self.sprite,self.x,self.y,0,1,1) 
   end
 end
 
-function object:setMask(w,h,x,y)
+function object:setMask(x,y,w,h)
   self.mask = {}
   self.mask.x = x
   self.mask.y = y
@@ -89,11 +92,16 @@ function object:move()
 end
 
 -- basic collision function, returns true if colliding with object with given tag
-function object:checkCollision(tag)
+-- x and y for checking relative positions
+function object:checkCollision(tag, x, y)
+  local x_offset, y_offset = 0, 0
+  if x ~= nil then x_offset = x end
+  if y ~= nil then y_offset = y end
+  
   local function f(obj,tag)
     local collision = false
     
-    local x, y = self.x + self.mask.x, self.y + self.mask.y
+    local x, y = self.x + self.mask.x + x_offset, self.y + self.mask.y + y_offset
     local h, w = self.mask.height, self.mask.width
     local x2, y2 = obj.x + obj.mask.x, obj.y + obj.mask.y
     local h2, w2 = obj.mask.height, obj.mask.width    
@@ -112,6 +120,11 @@ end
 
 -- functions for moving around solid objects
 function object:moveIfNoSolid()
+  self:moveIfNoSolidHorizontal()
+  self:moveIfNoSolidVertical()
+end
+
+function object:moveIfNoSolidHorizontal()
   local old_x, old_y = self.x, self.y
   
   self.x = self.x + self.hspeed
@@ -122,15 +135,23 @@ function object:moveIfNoSolid()
     self:moveToContactHor(collide)
   end
   
+  return collide
+end
+
+function object:moveIfNoSolidVertical()
+  local old_x, old_y = self.x, self.y
+  
   self.y = self.y + self.vspeed
   
-  collide = self:checkCollision("solid")
+  local collide = self:checkCollision("solid")
   if (collide) then
     self.y = old_y
     self:moveToContactVert(collide)
-  end  
+  end    
+  
+  return collide
 end
-
+  
 -- snap against side of given object horizontally
 function object:moveToContactHor(obj)
   local pushback

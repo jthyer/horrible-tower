@@ -52,6 +52,10 @@ function keyboard.shiftPressed()
   return false
 end
 
+function keyboard.action()
+  return love.keyboard.isDown("z")
+end
+
 function keyboard.actionPressed()
   if love.keyboard.isDown("z") then
     if actionHeld == false then
