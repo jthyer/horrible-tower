@@ -8,7 +8,7 @@ local SLOWFALL = 5
 local TIME_TO_RELEASE = 4
 
 function player:sprite()
-  self.sprite = asset.sprite["spr_player"] 
+  self.sprite = asset.sprite["player"] 
   self:setMask(12,12,8,24)
 end
 

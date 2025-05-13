@@ -40,8 +40,10 @@ function object:new(id, class, x, y)
   
   if self.sprite then 
     self:sprite()
-    self.width = self.sprite:getWidth()
-    self.height = self.sprite:getHeight()
+    self.width = self.sprite.frameWidth
+    self.height = self.sprite.frameHeight
+    self.frameIndex = 1
+    self.frameTimer = 0
   else
     self.width = 16
     self.height = 16
@@ -66,6 +68,17 @@ function object:update()
   end
   
   -- updating sprite animation, if self.sprite then
+  if self.sprite and self.sprite.frameSpeed > 0 then
+    if self.frameTimer > self.sprite.frameSpeed then
+      self.frameIndex = self.frameIndex + 1
+      if self.frameIndex > self.sprite.frameCount then
+        self.frameIndex = 1
+      end
+      self.frameTimer = 0
+    else
+      self.frameTimer = self.frameTimer + 1
+    end
+  end
 end
 
 function object:draw()
@@ -73,7 +86,7 @@ function object:draw()
   -- love.graphics.rectangle("line",self.x + self.mask.x ,self.y + self.mask.y ,self.mask.width,self.mask.height)  
   
   if self.sprite ~= nil then
-     love.graphics.draw(self.sprite,self.x,self.y,0,1,1) 
+    love.graphics.draw(self.sprite.texture,self.sprite.frame[self.frameIndex],self.x,self.y,0,1,1) 
   end
 end
 

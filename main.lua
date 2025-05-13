@@ -6,6 +6,7 @@ Loads core engine, runs game loop, handles frame data, game quitting, fullscreen
 
 -- import core engine
 window = require "core.window"
+util = require "core.util"
 object = require "core.object" 
 manager = require "core.manager"
 asset = require "core.asset"
@@ -14,7 +15,7 @@ sound = require "core.sound"
 background = require "core.background"
 keyboard = require "core.keyboard"
 text = require "core.text"
-util = require "core.util"
+
 
 -- import game-specific info
 info = require "source.info"

@@ -24,9 +24,28 @@ local function defineSprites()
   
   for i, file in ipairs(files) do
     if string.sub(file, -4) == '.png' then
-      local index = string.sub(file,1,string.len(file)-4)
+      local metadata = util.splitString(util.splitString(file,".")[1],"_")
+      local index = metadata[2] 
+      local frameCount = metadata[3]
+      local frameSpeed = metadata[4]
       local filePath = dir .. "/" .. file
-      asset.sprite[index] = love.graphics.newImage(filePath)
+        
+      asset.sprite[index] = {}
+      asset.sprite[index].frame = {}
+      local sprite = asset.sprite[index]
+      
+      sprite.texture = love.graphics.newImage(filePath)
+      sprite.textureWidth = sprite.texture:getWidth()
+      sprite.textureHeight = sprite.texture:getHeight()
+      sprite.frameCount = tonumber(frameCount)
+      sprite.frameSpeed = tonumber(frameSpeed)
+      sprite.frameWidth = sprite.textureWidth / sprite.frameCount
+      sprite.frameHeight = sprite.textureHeight
+      
+      for i = 1, sprite.frameCount do
+        sprite.frame[i] = love.graphics.newQuad(sprite.frameWidth*(i-1), 0,
+          sprite.frameWidth, sprite.frameHeight, sprite.textureWidth, sprite.textureHeight)
+      end
     end
   end
 end

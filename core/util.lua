@@ -31,4 +31,14 @@ function util.round(n)
   return math.floor(n+0.5) 
 end
 
+-- function by Mateen Ulhaq on Stack Overflow
+function util.splitString(str, delim)
+  local t = {}
+  for str in string.gmatch(str, "([^" .. delim .. "]+)") do
+    table.insert(t,str)
+  end
+  
+  return t
+end
+
 return util
