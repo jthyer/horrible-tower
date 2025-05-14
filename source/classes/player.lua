@@ -107,7 +107,7 @@ function player:spriteUpdate()
 end
 
 function player:checkEnemyCollision()
-  if (self.vspeed > 0 and self:checkCollision("enemy")) then
+  if (self.vspeed > 0 and self:checkCollision("enemy",-8,0,16,0)) then
     self.vspeed = -JUMP - JUMP_OFF_ENEMY
     self:moveIfNoSolidVertical()
     self.jumpTimer = TIME_TO_RELEASE

@@ -66,8 +66,7 @@ function object:update()
   if self.step then 
     self:step() 
   end
-  
-  -- updating sprite animation, if self.sprite then
+
   if self.sprite and self.sprite.frameSpeed > 0 then
     if self.frameTimer > self.sprite.frameSpeed then
       self.frameIndex = self.frameIndex + 1
@@ -101,7 +100,7 @@ function object:setMask(x,y,w,h)
 end
 
 function object:spriteSet(index)
-  if self.spriteIndex ~= index then
+  if self.sprite and self.spriteIndex ~= index then
     self.spriteIndex = index
     self.sprite = asset.sprite[self.spriteIndex]
     self.width = self.sprite.frameWidth
