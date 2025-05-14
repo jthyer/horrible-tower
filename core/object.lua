@@ -37,16 +37,16 @@ function object:new(id, class, x, y)
   self.y = y
   self.hspeed = 0
   self.vspeed = 0
+  self.flip_x = 1
+  self.flip_y = 1
   
   if self.sprite then 
     self:sprite()
-    self.width = self.sprite.frameWidth
-    self.height = self.sprite.frameHeight
-    self.frameIndex = 1
-    self.frameTimer = 0
   else
     self.width = 16
     self.height = 16
+    self.origin_x = self.width / 2
+    self.origin_y = self.height / 2
   end
 
   if self.mask == nil then
@@ -83,10 +83,12 @@ end
 
 function object:draw()
   -- debug:
+  -- love.graphics.rectangle("line",self.x,self.y ,self.width,self.height)  
   -- love.graphics.rectangle("line",self.x + self.mask.x ,self.y + self.mask.y ,self.mask.width,self.mask.height)  
   
   if self.sprite ~= nil then
-    love.graphics.draw(self.sprite.texture,self.sprite.frame[self.frameIndex],self.x,self.y,0,1,1) 
+    love.graphics.draw(self.sprite.texture,self.sprite.frame[self.frameIndex],
+      self.x+self.origin_x,self.y+self.origin_y,0,self.flip_x,self.flip_y,self.origin_x,self.origin_y) 
   end
 end
 
@@ -96,6 +98,19 @@ function object:setMask(x,y,w,h)
   self.mask.y = y
   self.mask.width = w
   self.mask.height = h
+end
+
+function object:spriteSet(index)
+  if self.spriteIndex ~= index then
+    self.spriteIndex = index
+    self.sprite = asset.sprite[self.spriteIndex]
+    self.width = self.sprite.frameWidth
+    self.height = self.sprite.frameHeight
+    self.frameIndex = 1
+    self.frameTimer = 0
+    self.origin_x = self.width / 2
+    self.origin_y = self.height / 2
+  end
 end
 
 -- basic movement function for objects with no solid detection

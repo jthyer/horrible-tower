@@ -8,8 +8,8 @@ local SLOWFALL = 5
 local TIME_TO_RELEASE = 4
 
 function player:sprite()
-  self.sprite = asset.sprite["player"] 
-  self:setMask(12,12,8,24)
+  self:spriteSet("player")
+  self:setMask(12,12,8,20)
 end
 
 function player:tag()
@@ -20,12 +20,14 @@ function player:create()
   self.jumpRelease = false
   self.jumpTimer = 0
   self.maxFallSpeed = FASTFALL
+  self.grounded = true
 end
 
 function player:step()  
   self:horizontalMovement()
   self:verticalMovement()
   self:checkEnemyCollision()
+  self:spriteUpdate()
 end
 
 function player:horizontalMovement()
@@ -34,7 +36,6 @@ function player:horizontalMovement()
   
   self.hspeed = 0
 
-  -- read keyboard input
   if keyboard.left() then 
     self.hspeed = -SPEED
   elseif keyboard.right() then
@@ -45,9 +46,9 @@ function player:horizontalMovement()
 end
 
 function player:verticalMovement()
-  local grounded = self:checkCollision("solid",0,1)
+  self.grounded = self:checkCollision("solid",0,1)
             
-  if grounded then
+  if self.grounded then
     if keyboard.actionPressed() then
       self.vspeed = -JUMP
       self.jumpRelease = false
@@ -78,6 +79,29 @@ function player:verticalMovement()
   if move and (self.y < move.y) then
     self.vspeed = 0
   end
+end
+
+function player:spriteUpdate()
+  if self.hspeed < 0 then
+    self.flip_x = -1
+  elseif self.hspeed > 0 then
+    self.flip_x = 1
+  end
+  
+  local sprite = self.spriteIndex  
+  if not self.grounded then
+    if keyboard.action() and not self.jumpRelease and self.vspeed > -5 then
+      sprite = "playerJump"
+    else
+      sprite = "playerFall"
+    end
+  elseif self.hspeed ~= 0 then
+    sprite = "playerWalk"
+  else
+    sprite = "player"
+  end
+  
+  self:spriteSet(sprite)
 end
 
 function player:checkEnemyCollision()
