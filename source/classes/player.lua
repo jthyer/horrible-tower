@@ -6,6 +6,7 @@ local GRAVITY = 0.2
 local FASTFALL = 10
 local SLOWFALL = 5
 local TIME_TO_RELEASE = 4
+local JUMP_OFF_ENEMY = 1
 
 function player:sprite()
   self:spriteSet("player")
@@ -77,6 +78,7 @@ function player:verticalMovement()
   
   local move = self:moveIfNoSolidVertical()
   if move and (self.y < move.y) then
+    -- set vspeed to 0 on contact with ground
     self.vspeed = 0
   end
 end
@@ -105,9 +107,15 @@ function player:spriteUpdate()
 end
 
 function player:checkEnemyCollision()
-  local collide = self:checkCollision("enemy")
+  if (self.vspeed > 0 and self:checkCollision("enemy")) then
+    self.vspeed = -JUMP - JUMP_OFF_ENEMY
+    self:moveIfNoSolidVertical()
+    self.jumpTimer = TIME_TO_RELEASE
   
-  if (collide) then
+    if keyboard.action() then
+      self.jumpRelease = false
+    end
+  elseif (self.y > window.WINDOW_HEIGHT or self:checkCollision("enemy")) then
     self:die()
   end
 end

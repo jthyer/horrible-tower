@@ -121,16 +121,19 @@ end
 
 -- basic collision function, returns true if colliding with object with given tag
 -- x and y for checking relative positions
-function object:checkCollision(tag, x, y)
+function object:checkCollision(tag, x, y, w, h)
   local x_offset, y_offset = 0, 0
+  local widthOffset, heightOffset = 0, 0
   if x ~= nil then x_offset = x end
   if y ~= nil then y_offset = y end
+  if w ~= nil then widthOffset = w end
+  if h ~= nil then heightOffset = h end
   
   local function f(obj,tag)
     local collision = false
     
     local x, y = self.x + self.mask.x + x_offset, self.y + self.mask.y + y_offset
-    local h, w = self.mask.height, self.mask.width
+    local h, w = self.mask.height + heightOffset, self.mask.width + widthOffset
     local x2, y2 = obj.x + obj.mask.x, obj.y + obj.mask.y
     local h2, w2 = obj.mask.height, obj.mask.width    
     
@@ -229,7 +232,7 @@ end
 function object:instanceDestroy(targetID)
   local id = targetID or self.id
 
-  return manager.removeObject(id)
+  return manager.removeObjectbyID(id)
 end
 
 return object
