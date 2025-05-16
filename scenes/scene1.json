@@ -16,7 +16,11 @@
       "gridCellsY": 30,
       "entities": [
         {"name": "player", "id": 53, "_eid": "20512387", "x": 272, "y": 416, "originX": 0, "originY": 0},
-        {"name": "jellyfish", "id": 54, "_eid": "21129402", "x": 208, "y": 416, "originX": 0, "originY": 0}
+        {"name": "jellyfish", "id": 54, "_eid": "21129402", "x": 208, "y": 416, "originX": 0, "originY": 0},
+        {"name": "spike", "id": 55, "_eid": "11329446", "x": 432, "y": 368, "originX": 0, "originY": 0},
+        {"name": "spike", "id": 56, "_eid": "11329446", "x": 448, "y": 368, "originX": 0, "originY": 0},
+        {"name": "spike", "id": 57, "_eid": "11329446", "x": 464, "y": 368, "originX": 0, "originY": 0},
+        {"name": "spike", "id": 58, "_eid": "11329446", "x": 416, "y": 368, "originX": 0, "originY": 0}
       ]
     },
     {

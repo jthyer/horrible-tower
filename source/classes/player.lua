@@ -107,17 +107,24 @@ function player:spriteUpdate()
 end
 
 function player:checkEnemyCollision()
-  if (self.vspeed > 0 and self:checkCollision("enemy",-8,0,16,0)) then
+  local bounce = self:checkCollision("enemy",-8,0,16,0)
+  local enemy = self:checkCollision("enemy")
+  local spike 
+  
+  if bounce then spike = bounce.spike end
+  
+  if (self.vspeed > 0 and bounce and not spike) then
     self.vspeed = -JUMP - JUMP_OFF_ENEMY
-    self:moveIfNoSolidVertical()
     self.jumpTimer = TIME_TO_RELEASE
   
     if keyboard.action() then
       self.jumpRelease = false
     end
-  elseif (self.y > window.WINDOW_HEIGHT or self:checkCollision("enemy")) then
+  elseif enemy then
     self:die()
   end
+
+  if self.y > window.WINDOW_HEIGHT then self:die() end
 end
 
 function player:die()
