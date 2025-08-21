@@ -39,6 +39,7 @@ function object:new(id, class, x, y)
   self.vspeed = 0
   self.flip_x = 1
   self.flip_y = 1
+  self.rotation = 0
   
   if self.sprite then 
     self:sprite()
@@ -83,7 +84,7 @@ end
 function object:draw()
   if self.sprite ~= nil then
     love.graphics.draw(self.sprite.texture,self.sprite.frame[self.frameIndex],
-      self.x+self.origin_x,self.y+self.origin_y,0,self.flip_x,self.flip_y,self.origin_x,self.origin_y) 
+      self.x+self.origin_x,self.y+self.origin_y,self.rotation,self.flip_x,self.flip_y,self.origin_x,self.origin_y) 
   else
     --debug
     love.graphics.rectangle("line",self.x,self.y ,self.width,self.height)  
@@ -216,6 +217,21 @@ function object:moveToContactVert(obj)
     pushback = y2 + h2 - y
     self.y = self.y + pushback
   end
+end
+
+function object:setVectorAimed(target_x,target_y, speed, rotate, offset)      
+  local angle = math.atan2((target_y - self.y), (target_x - self.x))
+  
+  if offset then 
+    angle = angle + offset
+  end
+  
+  if rotate then
+    self.rotation = angle + 1.571 -- rotate bullet
+  end
+  
+  self.hspeed = speed * math.cos(angle)
+  self.vspeed = speed * math.sin(angle)
 end
 
 function object:instanceCreate(class,x,y)

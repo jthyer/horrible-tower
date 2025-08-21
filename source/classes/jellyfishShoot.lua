@@ -1,7 +1,7 @@
 local jellyfishShoot = require("source.classes.jellyfish"):extend()
 
 local SHOTSPEED = 2
-local SHOTINTERVAL = 120
+local SHOTINTERVAL = 60
 
 function jellyfishShoot:create()
   self.shotTimer = SHOTINTERVAL
@@ -14,8 +14,8 @@ end
 
 function jellyfishShoot:update()
   if self.shotTimer == 0 then
-    manager.addObject("jellyfishMove",self.x,self.y)
-    self.shotInterval = SHOTINTERVAL
+    manager.addObject("bullet",self.x,self.y)
+    self.shotTimer = SHOTINTERVAL
   end
   
   self.shotTimer = self.shotTimer - 1
