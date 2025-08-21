@@ -16,14 +16,16 @@
       "gridCellsY": 30,
       "entities": [
         {"name": "player", "id": 53, "_eid": "20512387", "x": 416, "y": 432, "originX": 0, "originY": 0},
-        {"name": "jellyfish", "id": 66, "_eid": "21129402", "x": 400, "y": 144, "originX": 0, "originY": 0},
-        {"name": "jellyfish", "id": 67, "_eid": "21129402", "x": 416, "y": 192, "originX": 0, "originY": 0},
-        {"name": "jellyfish", "id": 68, "_eid": "21129402", "x": 432, "y": 240, "originX": 0, "originY": 0},
-        {"name": "jellyfish", "id": 69, "_eid": "21129402", "x": 448, "y": 288, "originX": 0, "originY": 0},
-        {"name": "jellyfish", "id": 70, "_eid": "21129402", "x": 464, "y": 336, "originX": 0, "originY": 0},
-        {"name": "jellyfish", "id": 71, "_eid": "21129402", "x": 384, "y": 96, "originX": 0, "originY": 0},
-        {"name": "jellyfish", "id": 72, "_eid": "21129402", "x": 368, "y": 48, "originX": 0, "originY": 0},
-        {"name": "jellyfish", "id": 73, "_eid": "21129402", "x": 480, "y": 384, "originX": 0, "originY": 0}
+        {"name": "jellyfishStill", "id": 66, "_eid": "21129402", "x": 400, "y": 144, "originX": 0, "originY": 0},
+        {"name": "jellyfishStill", "id": 67, "_eid": "21129402", "x": 416, "y": 192, "originX": 0, "originY": 0},
+        {"name": "jellyfishStill", "id": 69, "_eid": "21129402", "x": 448, "y": 288, "originX": 0, "originY": 0},
+        {"name": "jellyfishStill", "id": 70, "_eid": "21129402", "x": 464, "y": 336, "originX": 0, "originY": 0},
+        {"name": "jellyfishStill", "id": 72, "_eid": "21129402", "x": 368, "y": 48, "originX": 0, "originY": 0},
+        {"name": "jellyfishMove", "id": 74, "_eid": "79549658", "x": 384, "y": 96, "originX": 0, "originY": 0},
+        {"name": "jellyfishMove", "id": 75, "_eid": "79549658", "x": 432, "y": 240, "originX": 0, "originY": 0},
+        {"name": "jellyfishMove", "id": 76, "_eid": "79549658", "x": 480, "y": 384, "originX": 0, "originY": 0},
+        {"name": "jellyfishStill", "id": 77, "_eid": "21129402", "x": 560, "y": 112, "originX": 0, "originY": 0},
+        {"name": "jellyfishShoot", "id": 78, "_eid": "79670505", "x": 544, "y": 256, "originX": 0, "originY": 0}
       ]
     },
     {
