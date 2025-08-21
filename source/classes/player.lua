@@ -29,6 +29,7 @@ function player:step()
   self:verticalMovement()
   self:checkEnemyCollision()
   self:spriteUpdate()
+  self:levelCompleted()
 end
 
 function player:horizontalMovement()
@@ -114,6 +115,7 @@ function player:checkEnemyCollision()
   if bounce then spike = bounce.spike end
   
   if (self.vspeed > 0 and bounce and not spike) then
+    bounce:die()
     self.vspeed = -JUMP - JUMP_OFF_ENEMY
     self.jumpTimer = TIME_TO_RELEASE
   
@@ -131,6 +133,12 @@ function player:die()
   sound.play("sfx_playerDead")
   self:instanceDestroy()
   scene.restart()
+end
+
+function player:levelCompleted()
+  if self.y < -16 then
+    scene.next()
+  end
 end
 
 return player

@@ -16,7 +16,6 @@ background = require "core.background"
 keyboard = require "core.keyboard"
 text = require "core.text"
 
-
 -- import game-specific info
 info = require "source.info"
 init = require "source.init"

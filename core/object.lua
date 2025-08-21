@@ -81,13 +81,13 @@ function object:update()
 end
 
 function object:draw()
-  -- debug:
-  -- love.graphics.rectangle("line",self.x,self.y ,self.width,self.height)  
-  -- love.graphics.rectangle("line",self.x + self.mask.x ,self.y + self.mask.y ,self.mask.width,self.mask.height)  
-  
   if self.sprite ~= nil then
     love.graphics.draw(self.sprite.texture,self.sprite.frame[self.frameIndex],
       self.x+self.origin_x,self.y+self.origin_y,0,self.flip_x,self.flip_y,self.origin_x,self.origin_y) 
+  else
+    --debug
+    love.graphics.rectangle("line",self.x,self.y ,self.width,self.height)  
+    love.graphics.rectangle("line",self.x + self.mask.x ,self.y + self.mask.y ,self.mask.width,self.mask.height) 
   end
 end
 
@@ -118,7 +118,7 @@ function object:move()
   self.y = self.y + self.vspeed
 end
 
--- basic collision function, returns true if colliding with object with given tag
+-- basic collision function, returns object if colliding with object with given tag
 -- x and y for checking relative positions
 function object:checkCollision(tag, x, y, w, h)
   local x_offset, y_offset = 0, 0
@@ -138,7 +138,7 @@ function object:checkCollision(tag, x, y, w, h)
     
     if (tag == nil or obj[tag] ~= nil) and (self.id ~= obj.id) then
       if (util.checkOverlap(x,y,w,h,x2,y2,w2,h2)) then
-        collision = true
+        collision = obj
       end
     end
     
