@@ -10,7 +10,15 @@ local JUMP_OFF_ENEMY = 1
 
 function player:sprite()
   self:spriteSet("player")
+  self:enemyMask()
+end
+
+function player:enemyMask()
   self:setMask(12,12,8,20)
+end
+
+function player:solidMask()
+  self:setMask(8,4,16,28)
 end
 
 function player:tag()
@@ -25,8 +33,10 @@ function player:create()
 end
 
 function player:step()  
+  self:solidMask()
   self:horizontalMovement()
   self:verticalMovement()
+  self:enemyMask()
   self:checkEnemyCollision()
   self:spriteUpdate()
   self:levelCompleted()

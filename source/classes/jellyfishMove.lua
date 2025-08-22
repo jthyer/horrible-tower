@@ -13,7 +13,7 @@ function jellyfishMove:sprite()
 end
 
 function jellyfishMove:update()
-  local collide = self:moveIfNoSolidHorizontal()
+  local collide = self:moveIfNoEnemySolidHorizontal()
   if collide then
     self.hspeed = self.hspeed * -1
   end

@@ -169,6 +169,21 @@ function object:moveIfNoSolidHorizontal()
   return collide
 end
 
+-- hack inclusion for this game
+function object:moveIfNoEnemySolidHorizontal()
+  local old_x, old_y = self.x, self.y
+  
+  self.x = self.x + self.hspeed
+  
+  local collide = self:checkCollision("enemySolid")
+  if (collide) then
+    self.x = old_x
+    self:moveToContactHor(collide)
+  end
+  
+  return collide
+end
+
 function object:moveIfNoSolidVertical()
   local old_x, old_y = self.x, self.y
   

@@ -3,6 +3,7 @@ local spike = object:extend()
 function spike:tag()
   self.enemy = true  
   self.spike = true
+  self.enemySolid = true
 end
 
 function spike:sprite()

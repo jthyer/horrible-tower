@@ -2,6 +2,7 @@ local wall = object:extend()
 
 function wall:tag()
   self.solid = true  
+  self.enemySolid = true
 end
 
 function wall:update()

@@ -9,12 +9,12 @@ end
 
 function jellyfishShoot:sprite()
   self:spriteSet("skull")
-  self:setMask(4,4,24,24)
+  self:setMask(4,8,24,20)
 end
 
 function jellyfishShoot:update()
   if self.shotTimer == 0 then
-    manager.addObject("bullet",self.x,self.y)
+    manager.addObject("bullet",self.x+8,self.y+8)
     self.shotTimer = SHOTINTERVAL
   end
   
