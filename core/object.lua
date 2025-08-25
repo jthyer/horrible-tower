@@ -82,13 +82,13 @@ function object:update()
 end
 
 function object:draw()
-  if self.sprite ~= nil then
+  if self.visible ~= nil then
     love.graphics.draw(self.sprite.texture,self.sprite.frame[self.frameIndex],
       self.x+self.origin_x,self.y+self.origin_y,self.rotation,self.flip_x,self.flip_y,self.origin_x,self.origin_y) 
   else
     --debug
-    love.graphics.rectangle("line",self.x,self.y ,self.width,self.height)  
-    love.graphics.rectangle("line",self.x + self.mask.x ,self.y + self.mask.y ,self.mask.width,self.mask.height) 
+    --love.graphics.rectangle("line",self.x,self.y ,self.width,self.height)  
+    --love.graphics.rectangle("line",self.x + self.mask.x ,self.y + self.mask.y ,self.mask.width,self.mask.height) 
   end
 end
 
@@ -110,6 +110,7 @@ function object:spriteSet(index)
     self.frameTimer = 0
     self.origin_x = self.width / 2
     self.origin_y = self.height / 2
+    self.visible = true
   end
 end
 
@@ -234,8 +235,8 @@ function object:moveToContactVert(obj)
   end
 end
 
-function object:setVectorAimed(target_x,target_y, speed, rotate, offset)      
-  local angle = math.atan2((target_y - self.y), (target_x - self.x))
+function object:setVector(angleStart, speed, rotate, offset)
+  local angle = angleStart
   
   if offset then 
     angle = angle + offset
@@ -247,6 +248,12 @@ function object:setVectorAimed(target_x,target_y, speed, rotate, offset)
   
   self.hspeed = speed * math.cos(angle)
   self.vspeed = speed * math.sin(angle)
+end
+
+function object:setVectorAimed(target_x,target_y, speed, rotate, offset)      
+  local angle = math.atan2((target_y - self.y), (target_x - self.x))
+  
+  self:setVector(angle, speed, rotate, offset)
 end
 
 function object:instanceCreate(class,x,y)

@@ -12,15 +12,19 @@ function bullet:sprite()
   self:setMask(2,2,12,12)
 end
 
-function bullet:create()
+function bullet:update()
+  self:move()
+end
+
+function bullet:aimed()
   local player = manager.getObjectByTag("player")
   local target_x, target_y = player.x + 8, player.y + 8
  
   self:setVectorAimed(target_x,target_y,SPEED,true)
 end
 
-function bullet:update()
-  self:move()
+function bullet:fixed(angle)
+  self:setVector(angle,SPEED,true)
 end
 
 return bullet

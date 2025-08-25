@@ -270,6 +270,44 @@
       "values": [],
       "texture": "../assets/sprites/spr_jellyfishShoot_1_0.png",
       "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA4ElEQVRYR+2XQRKDIAxFm5N10xt13ZVrb9RNT0YHZ3AUk8D/ozituBRCHp/ko3JznjEMwRuvHXvKS6y56sBeifOkGsgK4KjEHsgM0Cp5gklqTACtky8h5KzkCaIDdAU2XRDb4xPekwPe5bHyCet9nFsbsyz6mEt1QiaRBeGtFWM2AKUABs6L+X+AkqKHK/B7AEhL5destltYARag1gdyaMgHmBb0NqT6QCJE5WThzI/FPQE8FaAjYOujA0AKsMVUqnZrXciKS6bCwF8DAPoeYM+SbdEmPgAr4P12s5eOteYXi/SDdvLyPy0AAAAASUVORK5CYIIA"
+    },
+    {
+      "exportID": "13442784",
+      "name": "jellyfishBoss",
+      "limit": -1,
+      "size": {"x": 32, "y": 32},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 32, "y": 32},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["entities"],
+      "values": [],
+      "texture": "../assets/sprites/spr_jellyfishBoss_1_0.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA20lEQVRYR+2XUQ6EIAxE5QSchfsfgrNwAjeYsFFsCzNRjLv4KZQ+hnZQtxhPjHG1xnvHQghOmysOXJW4TiqBHADuSmyBfAFGJS8wRY0NYHTyPYR7KnmBmABTgVMX5PZIKW0O6L0/+IT2Ps/tjdkXfc4lOiGTSIOw1soxJ4BWAANnxfw+QEvR2xV4HwDSUvU1K+0WVoAF6PWBGhryAaYFrQ2JPlAIUTlZOPVj8UoASwXoCNj6mACQAmwxtapdWxey4papMPD/AQB9D7BnybboEB+AFbB+u9lLR1vzA1MzhUxYorZ8AAAAAElFTkSuQmCC"
     }
   ],
   "tilesets": [

@@ -10,6 +10,7 @@ function jellyfish:sprite()
 end
 
 function jellyfish:die()
+  self:instanceCreate("jellyfishDeath",self.x,self.y)
   self:instanceDestroy()
 end
 

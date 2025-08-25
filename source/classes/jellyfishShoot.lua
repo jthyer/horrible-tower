@@ -14,7 +14,8 @@ end
 
 function jellyfishShoot:update()
   if self.shotTimer == 0 then
-    manager.addObject("bullet",self.x+8,self.y+8)
+    local b = manager.addObject("bullet",self.x+8,self.y+8)
+    b:aimed()
     self.shotTimer = SHOTINTERVAL
   end
   
