@@ -87,8 +87,8 @@ function object:draw()
       self.x+self.origin_x,self.y+self.origin_y,self.rotation,self.flip_x,self.flip_y,self.origin_x,self.origin_y) 
   else
     --debug
-    love.graphics.rectangle("line",self.x,self.y ,self.width,self.height)  
-    love.graphics.rectangle("line",self.x + self.mask.x ,self.y + self.mask.y ,self.mask.width,self.mask.height) 
+    --love.graphics.rectangle("line",self.x,self.y ,self.width,self.height)  
+    --love.graphics.rectangle("line",self.x + self.mask.x ,self.y + self.mask.y ,self.mask.width,self.mask.height) 
   end
 end
 

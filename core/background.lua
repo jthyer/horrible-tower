@@ -51,7 +51,7 @@ function setCanvas(BGDATA)
   canvas = love.graphics.newCanvas(BGDATA.width,BGDATA.height)
   love.graphics.setCanvas(canvas)
   
-  drawColor(BGDATA)
+  drawColor(BGDATA)  
   drawTexture(BGDATA)
   drawTiles(BGDATA)
 

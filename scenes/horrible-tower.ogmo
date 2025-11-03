@@ -192,8 +192,8 @@
       "nodeGhost": true,
       "tags": ["entities"],
       "values": [],
-      "texture": "../assets/sprites/spr_barrier.png",
-      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIElEQVQ4T2Psv/v/PwMFgHHUAIbRMGAYDQNgHhoG6QAAfaM2sfRRHRUAAAAASUVORK5CYIIA"
+      "texture": "../assets/sprites/spr_spike_1_0.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABFElEQVQ4T42T0Q2CQBBEFytBYzkEfyRUYDB+i9RAKEAogfhnqE+8uWPIHSzG/UJ25zmzd0Tyo9IkGdF+D0O0NTY3kml4mIYhLqtKjoe9FMV1hiyhM4CCpq7tsAZI02Tsnm0ADKz5ENkZ05/QeNe1cjFu6BLdVTZCKEUEFGJo+1Ad+P9LACHLhVoAF4NnLG4LQAiSISFgblkPIzKopm4MoJz0OMHInoIbdwtBFOwCr4rLTSwgyzM79Op7yfI8cBDHsTiUK5wSXeJ5FUED+ESKALUR/Cbc4MXZcwEHLIhR/iLVY8QQnRCgiTG3cgAhdqEVsvOmsh9cZYp5lfEbDig6mYj3BSQA+Pnc6YQA9Dc/Js3yP5/zF0Skqd1kVzYuAAAAAElFTkSuQmCC"
     },
     {
       "exportID": "79549658",
