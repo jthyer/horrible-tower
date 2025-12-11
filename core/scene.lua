@@ -28,6 +28,8 @@ end
 function scene.draw()
   background.draw()
   manager.draw()
+  
+  text.draw("fart",0,0)
 end
 
 -- TODO: track scenes with indexes for non-linear traversal
