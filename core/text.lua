@@ -18,6 +18,11 @@ function text.draw(t, x, y)
 
 end
 
+function text.screenClear()
+  screen = {}
+  queue = {}
+end
+
 function text.screenLoad(text)
   if screen.canvas then
     table.insert(queue,text)

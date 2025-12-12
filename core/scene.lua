@@ -15,10 +15,11 @@ local sceneTotal = #sceneData
 function scene.load(i)
   sceneNumber = i
   
+  text.screenClear()
+  init.load(sceneNumber)
   keyboard.load()
   background.load(sceneData[sceneNumber])
   manager.load(sceneData[sceneNumber].objectData)
-  init.load(sceneNumber)
 end
 
 function scene.update()

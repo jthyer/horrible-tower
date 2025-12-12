@@ -19,6 +19,7 @@ function init.load(sceneNumber)
     text.screenLoad("\"Ascending all six floors of my tower is an even more impossible task.\"")
     textSeen = 2
   elseif sceneNumber == 3 and textSeen == 2 then
+    background.setTexture("bg_dawn")
     text.screenLoad("\"Give up now.\"")
     text.screenLoad("\"You can’t get past my jellyfish armada.\"")
     textSeen = 3
@@ -27,14 +28,16 @@ function init.load(sceneNumber)
     text.screenLoad("\"...Most Vigorously Pitiful!!\"")
     textSeen = 4
   elseif sceneNumber == 5 and textSeen == 4 then
+    background.setTexture("bg_dusk")
     text.screenLoad("\"You’ll strike out on this floor for sure.\"")
     textSeen = 5
   elseif sceneNumber == 6 and textSeen == 5 then
     text.screenLoad("\"Just quit!\"")
     text.screenLoad("\"If even I couldn’t make it to the world series in all my years of play...\"")
-    text.screenLoad("\"...there’s no way you’ll be able to defeat this final challenge.\"")
+    text.screenLoad("\"...there’s no way you’ll be able to defeat my elite jellyfish captain.\"")
     textSeen = 6
   elseif sceneNumber == 7 and textSeen == 6 then
+    background.setTexture("bg_sky")
     text.screenLoad("\"I can’t believe you escaped my tower.\"")
     text.screenLoad("\"You are truly a hall of fame player.\"")
     textSeen = 7
@@ -54,7 +57,7 @@ end
 
 -- return default background texture 
 function init.backgroundTexture()
-  return "bg_stars"
+  return "bg_night"
 end
 
 return init

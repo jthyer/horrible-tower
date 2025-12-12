@@ -94,14 +94,14 @@ end
 function love.keypressed(key, scancode)
   if key == "escape" then
     love.event.quit()
-  end
-   
-  if key == "r" then
+  elseif key == "r" then
     love.event.push("quit","restart")
-  end
-   
-   if key == "f" then
+  elseif key == "f" then
      changeFullscreen()
+  elseif key == "pagedown" then
+    scene.next()
+  elseif key == "pageup" then
+    scene.previous()
   end
 end
 

@@ -16,6 +16,7 @@ local canvas
 local dim = window.TILE_DIMENSION
 local tileset
 local texture
+local textureIndex
 local x, y 
 local setCanvas, drawColor, drawTexture, drawTiles
 
@@ -37,10 +38,16 @@ function background.load(BGDATA)
     end
   end 
   
-  local textureIndex = init.backgroundTexture()
+  if not textureIndex then 
+    textureIndex = init.backgroundTexture()
+  end
   texture = asset.bg[textureIndex]
   
   setCanvas(BGDATA)
+end
+
+function background.setTexture(t)
+  textureIndex = t
 end
 
 function background.draw()
