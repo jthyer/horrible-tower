@@ -6,40 +6,61 @@ and the like down the line.
 ]]--
 
 local text = {}
+local screen = {}
+local queue = {}
 
 function text.setFont(index, size)
-  local font = love.graphics.newFont(asset.font[index],size,"mono")
+  local font = love.graphics.newFont(24)--asset.font[index],size,"mono")
   love.graphics.setFont(font)
 end
 
 function text.draw(t, x, y)
-  love.graphics.setColor(0,0,0)
-  love.graphics.printf(t, x, y, window.WINDOW_WIDTH,"center")
-  love.graphics.setColor(1,1,1)
+
 end
 
--- screen types:
---  "continue" = pressing action progresses
---  "end" = do nothing
---  "wait" = wait a certain number of frames
-function text.screenLoad(text, screenType, waitTime)
-  text.screen = {}
-  
-  text.screen.text = text
-  text.screen.type = screenType
-  text.screen.wait = waitTime
-  
-  text.screen.canvas = love.graphics.newCanvas(window.WINDOW_WIDTH,window.WINDOW_HEIGHT)
-  love.graphics.setCanvas(text.screen.canvas)
+function text.screenLoad(text)
+  if screen.canvas then
+    table.insert(queue,text)
+    return
+  end
 
-  local r, g, b = init.backgroundColor()
-  love.graphics.setColor(r,g,b,1)
-  love.graphics.rectangle("fill",0,0,window.WINDOW_WIDTH,window.WINDOW_HEIGHT) 
-  love.graphics.setColor(1,1,1,1)
+  screen = {}
   
-  text.draw("text",0,100)
+  screen.text = text
+  
+  screen.canvas = love.graphics.newCanvas(window.WINDOW_WIDTH,window.WINDOW_HEIGHT)
+  love.graphics.setCanvas(screen.canvas)
+
+  love.graphics.setColor(0,0,0)
+  love.graphics.rectangle("fill",0,0,window.WINDOW_WIDTH,window.WINDOW_HEIGHT) 
+  love.graphics.setColor(1,1,1)
+  love.graphics.printf(screen.text, 100, 180, window.WINDOW_WIDTH-200,"center")
 
   love.graphics.setCanvas()
+end
+
+function text.screenUpdate()
+  if not screen.canvas then
+    return false
+  end
+  
+  if keyboard.actionPressed() then
+    screen.canvas = nil
+    if #queue > 0 then
+      text.screenLoad(queue[1])
+      table.remove(queue,1)
+    end
+  end
+  
+  return true
+end
+
+function text.screenDraw()
+  if not screen.canvas then
+    return
+  end
+  
+  love.graphics.draw(screen.canvas,0,0,0,1,1)
 end
 
 return text

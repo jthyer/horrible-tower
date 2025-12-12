@@ -27,7 +27,7 @@ local accumulator = 0.0
 local frameCount = 0
 local dtCount = 0
 local fps = 0
-local debug = true
+local debug = false
 local frameCanvas = love.graphics.newCanvas(window.WINDOW_WIDTH,window.WINDOW_HEIGHT)
 local changeFullscreen
 
@@ -92,9 +92,13 @@ end
 -- quit the game with escape, change fullscreen with f
 -- TODO: make a proper pause screen/options menu
 function love.keypressed(key, scancode)
-   if key == "escape" then
-      love.event.quit()
-   end
+  if key == "escape" then
+    love.event.quit()
+  end
+   
+  if key == "r" then
+    love.event.push("quit","restart")
+  end
    
    if key == "f" then
      changeFullscreen()

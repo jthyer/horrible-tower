@@ -22,14 +22,18 @@ function scene.load(i)
 end
 
 function scene.update()
-  manager.update()
+  if text.screenUpdate() then
+    return
+  end
+  
+  manager.update()  
 end
 
 function scene.draw()
   background.draw()
   manager.draw()
   
-  text.draw("fart",0,0)
+  text.screenDraw()
 end
 
 -- TODO: track scenes with indexes for non-linear traversal
