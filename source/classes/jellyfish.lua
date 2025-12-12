@@ -5,8 +5,8 @@ function jellyfish:tag()
 end
 
 function jellyfish:sprite()
-  self:spriteSet("skull")
-  self:setMask(4,4,24,24)
+  self:spriteSet("jellyfishStill")
+  self:setMask(4,8,24,20)
 end
 
 function jellyfish:die()

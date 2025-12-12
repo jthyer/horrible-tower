@@ -4,12 +4,11 @@ local SHOTSPEED = 2
 local SHOTINTERVAL = 60
 
 function jellyfishBoss:create()
-  self.hp = 3
   self.shotTimer = SHOTINTERVAL
 end
 
 function jellyfishBoss:sprite()
-  self:spriteSet("skull")
+  self:spriteSet("jellyfishBoss")
   self:setMask(4,8,24,20)
 end
 
@@ -30,10 +29,7 @@ function jellyfishBoss:loadBossWave()
 end
 
 function jellyfishBoss:die()
-  self.hp = self.hp - 1
-  if self.hp <= 0 then
-    self:instanceDestroy()
-  end
+  self:instanceDestroy()
 end
 
 return jellyfishBoss

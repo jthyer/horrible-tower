@@ -146,7 +146,7 @@ function player:die()
 end
 
 function player:levelCompleted()
-  if self.y < -16 then
+  if self.y < -16 or self:checkCollision("win") then
     scene.next()
   end
 end

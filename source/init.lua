@@ -10,7 +10,7 @@ local textSeen = 0
 
 function init.load(sceneNumber)
   if sceneNumber == 1 and textSeen == 0 then
-    text.screenLoad("Ken Griffy Jr.'s Horrible Tower\n\nPress Z to Start")
+    text.screenLoad("Ken Griffey Jr.'s Horrible Tower\n\nPress Z to Start")
     text.screenLoad("\"You are just a pathetic little kitty.\"")
     text.screenLoad("\"You will never escape my tower.\"")
     textSeen = 1

@@ -42,6 +42,10 @@ function scene.getSceneNumber()
   return sceneNumber
 end
 
+function scene.getSceneMax()
+  return sceneTotal
+end
+
 function scene.next()
   if sceneNumber < sceneTotal then
     sceneNumber = sceneNumber + 1

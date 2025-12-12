@@ -8,7 +8,7 @@ function jellyfishShoot:create()
 end
 
 function jellyfishShoot:sprite()
-  self:spriteSet("skull")
+  self:spriteSet("jellyfishShoot")
   self:setMask(4,8,24,20)
 end
 

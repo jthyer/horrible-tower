@@ -38,7 +38,15 @@ function text.screenLoad(text)
 
   love.graphics.setColor(0,0,0)
   love.graphics.rectangle("fill",0,0,window.WINDOW_WIDTH,window.WINDOW_HEIGHT) 
-  love.graphics.setColor(1,1,1)
+  if (scene.getSceneNumber() > 1 or #queue ~= 0) and scene.getSceneNumber() < 8 then
+    love.graphics.setColor(1,1,1,0.4)
+    love.graphics.draw(asset.sprite["griffey"].texture,200,55,0,1,1)
+  end    
+  if scene.getSceneNumber() == 8 and #queue == 2 then
+    love.graphics.setColor(1,1,1,0.8)
+    love.graphics.draw(asset.sprite["eyes"].texture,200,130,0,1,1)
+  end    
+  love.graphics.setColor(1,1,1,1)
   love.graphics.printf(screen.text, 100, 180, window.WINDOW_WIDTH-200,"center")
 
   love.graphics.setCanvas()
@@ -53,7 +61,10 @@ function text.screenUpdate()
     screen.canvas = nil
     if #queue > 0 then
       text.screenLoad(queue[1])
-      table.remove(queue,1)
+      
+      if #queue > 1 or scene.getSceneNumber() ~= scene.getSceneMax() then
+        table.remove(queue,1)
+      end
     end
   end
   

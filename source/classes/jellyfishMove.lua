@@ -8,8 +8,8 @@ function jellyfishMove:create()
 end
 
 function jellyfishMove:sprite()
-  self:spriteSet("skull")
-  self:setMask(4,4,24,24)
+  self:spriteSet("jellyfishMove")
+  self:setMask(4,8,24,20)
 end
 
 function jellyfishMove:update()
