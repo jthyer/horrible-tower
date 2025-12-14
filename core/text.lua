@@ -39,11 +39,11 @@ function text.screenLoad(text)
   love.graphics.setColor(0,0,0)
   love.graphics.rectangle("fill",0,0,window.WINDOW_WIDTH,window.WINDOW_HEIGHT) 
   if (scene.getSceneNumber() > 1 or #queue ~= 0) and scene.getSceneNumber() < 8 then
-    love.graphics.setColor(1,1,1,0.4)
+    love.graphics.setColor(1,1,1,0.6)
     love.graphics.draw(asset.sprite["griffey"].texture,200,55,0,1,1)
   end    
   if scene.getSceneNumber() == 8 and #queue == 2 then
-    love.graphics.setColor(1,1,1,0.8)
+    love.graphics.setColor(1,1,1,1)
     love.graphics.draw(asset.sprite["eyes"].texture,200,130,0,1,1)
   end    
   love.graphics.setColor(1,1,1,1)
@@ -57,14 +57,26 @@ function text.screenUpdate()
     return false
   end
   
+  if scene.getSceneNumber == 8 and sound.musicIsPlaying() == "bgm_ending" then
+    sound.musicStop()
+  end
+  
   if keyboard.actionPressed() then
     screen.canvas = nil
     if #queue > 0 then
       text.screenLoad(queue[1])
-      
+
+      if scene.getSceneNumber() == 8 and #queue == 2 then
+        sound.musicPlay("bgm_scary")
+      end
+
       if #queue > 1 or scene.getSceneNumber() ~= scene.getSceneMax() then
         table.remove(queue,1)
       end
+    elseif scene.getSceneNumber() == 1 then
+      sound.musicPlay("bgm_junior")
+    elseif scene.getSceneNumber() == 6 then
+      sound.musicPlay("bgm_final")
     end
   end
   

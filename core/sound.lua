@@ -8,6 +8,7 @@ doesn't pack in with the sound player out of the box.
 local sound = {}
 
 local music 
+local musicIndex
 
 function sound.play(index)
   local currentSound = asset.sound[index]:clone()
@@ -19,14 +20,28 @@ function sound.musicPlay(index)
     sound.musicStop()
   end
   
+  musicIndex = index
+  
   music = asset.sound[index]
   music:setLooping(true)
+  if index == "bgm_junior" then
+    music:setVolume(0.15)
+  else
+    music:setVolume(0.25)
+  end
   music:play()
 end
 
+function sound.musicIsPlaying()
+  return musicIndex
+end
+
 function sound.musicStop()
-  music:stop()
+  if music ~= nil then
+    music:stop()
+  end
   music = nil
+  musicIndex = nil
 end
 
 return sound

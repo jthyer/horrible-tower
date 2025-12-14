@@ -49,6 +49,13 @@ end
 function scene.next()
   if sceneNumber < sceneTotal then
     sceneNumber = sceneNumber + 1
+  else
+    return
+  end
+  
+  -- kludge in case level skip keys break music
+  if sceneNumber == 2 and not sound.musicIsPlaying() then
+    sound.musicPlay("bgm_junior")
   end
   
   scene.load(sceneNumber)
@@ -57,6 +64,11 @@ end
 function scene.previous()
   if sceneNumber > 1 then
     sceneNumber = sceneNumber - 1
+  end
+  
+  -- kludge in case level skip keys break music
+  if sceneNumber == 5 then
+    sound.musicPlay("bgm_junior")
   end
   
   scene.load(sceneNumber)

@@ -16,6 +16,7 @@ function jellyfishShoot:update()
   if self.shotTimer == 0 then
     local b = manager.addObject("bullet",self.x+8,self.y+8)
     b:aimed()
+    asset.sound["sfx_enemyShoot"]:play()
     self.shotTimer = SHOTINTERVAL
   end
   

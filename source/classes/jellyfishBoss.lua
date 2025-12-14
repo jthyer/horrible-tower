@@ -19,6 +19,11 @@ function jellyfishBoss:update()
   end
   
   self.shotTimer = self.shotTimer - 1
+  
+  -- kludge in case level skip breaks music
+  if sound.musicIsPlaying() ~= "bgm_final" then
+    sound.musicPlay("bgm_final")
+  end
 end
 
 function jellyfishBoss:loadBossWave()
@@ -26,10 +31,6 @@ function jellyfishBoss:loadBossWave()
     local b = manager.addObject("bullet",self.x+8,self.y+8)
     b:fixed(math.rad(i*36))
   end
-end
-
-function jellyfishBoss:die()
-  self:instanceDestroy()
 end
 
 return jellyfishBoss

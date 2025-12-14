@@ -12,7 +12,7 @@ function init.load(sceneNumber)
   if sceneNumber == 1 and textSeen == 0 then
     text.screenLoad("Ken Griffey Jr.'s Horrible Tower\n\nPress Z to Start")
     text.screenLoad("\"You are just a pathetic little kitty.\"")
-    text.screenLoad("\"You will never escape my tower.\"")
+    text.screenLoad("\"You will never summit my tower.\"")
     textSeen = 1
   elseif sceneNumber == 2 and textSeen == 1 then
     text.screenLoad("\"In 1993, I scored home runs in eight games in a row.\"")
@@ -32,16 +32,19 @@ function init.load(sceneNumber)
     text.screenLoad("\"You’ll strike out on this floor for sure.\"")
     textSeen = 5
   elseif sceneNumber == 6 and textSeen == 5 then
+    sound.musicStop()
     text.screenLoad("\"Just quit!\"")
-    text.screenLoad("\"If even I couldn’t make it to the world series in all my years of play...\"")
+    text.screenLoad("\"If I couldn’t make it to the world series in all my years of play...\"")
     text.screenLoad("\"...there’s no way you’ll be able to defeat my elite jellyfish captain.\"")
     textSeen = 6
   elseif sceneNumber == 7 and textSeen == 6 then
     background.setTexture("bg_sky")
-    text.screenLoad("\"I can’t believe you escaped my tower.\"")
+    sound.musicStop()
+    text.screenLoad("\"I can’t believe you conquered my tower.\"")
     text.screenLoad("\"You are truly a hall of fame player.\"")
     textSeen = 7
   elseif sceneNumber == 8 and textSeen == 7 then
+    sound.musicStop()
     text.screenLoad("You have defeated Ken Griffey Jr. and his horrible tower.")
     text.screenLoad("But beware...")
     text.screenLoad("As long as there is darkness in the hearts of man...")

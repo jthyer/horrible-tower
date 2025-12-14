@@ -62,6 +62,7 @@ function player:verticalMovement()
             
   if self.grounded then
     if keyboard.actionPressed() then
+      sound.play("sfx_jump")
       self.vspeed = -JUMP
       self.jumpRelease = false
       self.jumpTimer = TIME_TO_RELEASE

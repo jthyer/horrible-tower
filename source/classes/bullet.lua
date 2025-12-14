@@ -8,8 +8,8 @@ function bullet:tag()
 end
 
 function bullet:sprite()
-  self:spriteSet("spike")
-  self:setMask(2,2,12,12)
+  self:spriteSet("bullet")
+  self:setMask(4,4,8,8)
 end
 
 function bullet:update()
