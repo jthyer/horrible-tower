@@ -3,6 +3,7 @@
 Tiny awful platformer by John Thyer (farawaytimes.itch.io)
 
 Move with arrow keys, z to jump, escape to quit, f to fullscreen
+  Page Up and Page Down to skip between levels
 
 Made with Love2d (love2d.org), Piskel (piskelapp.com), and OGMO Editor (ogmo-editor-3.github.io)
 
