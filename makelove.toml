@@ -2,7 +2,7 @@ name = "Ken-Griffey-Jrs-Horrible-Tower"
 default_targets = ["win32", "win64", "macos", "appimage"]
 build_directory = "makelove-build"
 
-love_version = "11.5"
+love_version = "11.4"
 
 love_files = [
     "::git-ls-tree::",

@@ -1,15 +1,16 @@
-Horrible Tower
+Ken Griffey Jr.'s Horrible Tower
 
-Tiny riff on Namco's Assault by John Thyer (farawaytimes.itch.io)
+Tiny awful platformer by John Thyer (farawaytimes.itch.io)
+
+Move with arrow keys, z to jump, escape to quit, f to fullscreen
 
 Made with Love2d (love2d.org), Piskel (piskelapp.com), and OGMO Editor (ogmo-editor-3.github.io)
 
-Move and turn with arrow keys, hold shift to strafe, z to fire, escape to quit, f to fullscreen
+Backgrounds from the RPGMaker 2003 RTP
 
-Music: Grand Master Duel, from the Pokémon TCG GameBoy Color game
-  Composed by Ichiro Shimakura
+Music from Ken Griffey Jr. Presents Major League Baseball, Radical Dreamers,
+  Chrono Trigger, Mega Man X
 
-Gunplay font: https://www.1001fonts.com/gunplay-font.html
+Special Thanks to Cecille for ripping and ogg-ifying the music
 
-Sprites from the classic Game Maker 5.x/6.x resource collection:
-  https://archive.org/details/old-gamemaker-resources
+Special Thanks to my playtesters: 
